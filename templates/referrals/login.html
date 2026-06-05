@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Affiliate Login — Upfront{% endblock %}
+
+{% block content %}
+<section class="min-h-[calc(100vh-72px)] flex items-center justify-center py-16 px-4 bg-[#FAF9F6]">
+    <div class="w-full max-w-md">
+        <div class="text-center mb-10">
+            <p class="overline mb-3">Affiliate Portal</p>
+            <h1 class="text-3xl md:text-4xl font-display font-bold text-[#002D2D] tracking-tight">
+                Welcome <span class="text-brand-500">Back</span>
+            </h1>
+            <p class="text-slate-500 mt-3 text-[15px]">Sign in to your affiliate dashboard.</p>
+        </div>
+
+        <div class="card-wl p-8 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+            <form method="post" class="space-y-5">
+                {% csrf_token %}
+
+                {% if messages %}
+                {% for message in messages %}
+                <div class="bg-red-50 border border-red-200 rounded-xl px-5 py-3 text-red-700 text-sm">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                <div>
+                    <label class="block text-[13px] font-bold text-[#002D2D] mb-1.5">Email</label>
+                    <input type="email" name="email" required
+                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all"
+                        placeholder="you@example.com">
+                </div>
+
+                <div>
+                    <label class="block text-[13px] font-bold text-[#002D2D] mb-1.5">Password</label>
+                    <input type="password" name="password" required
+                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all"
+                        placeholder="Your password">
+                </div>
+
+                <button type="submit"
+                    class="w-full px-6 py-3.5 rounded-full bg-brand-500 text-white font-bold text-[15px] hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40">
+                    Sign In
+                </button>
+            </form>
+
+            <p class="text-center text-slate-400 text-[13px] mt-6">
+                Don't have an account?
+                <a href="{% url 'referrals:affiliate_signup' %}"
+                    class="text-brand-500 font-bold hover:text-brand-600 transition-colors">Join the program</a>
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

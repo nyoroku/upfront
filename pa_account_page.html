@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+
+<html lang="en" style="height: 100%">
+    <head>
+        
+            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHJF51F24N"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-DHJF51F24N');
+            </script>
+        
+
+        <meta charset="utf-8">
+        <title>Account : worklane : PythonAnywhere</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Account : worklane : PythonAnywhere">
+        <meta name="author" content="PythonAnywhere LLP">
+        <meta name="google-site-verification" content="O4UxDrfcHjC44jybs2vajc1GgRkTKCTRgVzeV6I9V14" />
+
+
+        <!-- Le styles -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" />
+
+        <link rel="stylesheet" href="/static/CACHE/css/output.562ba3d8506e.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="/static/CACHE/css/output.b9a4961a16f7.css" type="text/css"><link rel="stylesheet" href="/static/CACHE/css/output.6d342c6fcb6d.css" type="text/css" media="screen">
+
+        <!-- Le javascript -->
+        <script type="text/javascript">
+            var Anywhere = {};
+            Anywhere.urls = {};
+            Anywhere.csrfToken = "cRv0VgwlNvvSft36mor1FXYrgfc37Oee2qMemflmlfjpNNLgUGEnrUJLNPOwVSWh";
+        </script>
+        <script src="/static/CACHE/js/output.3a42bfc02f19.js"></script>
+        
+
+        <script src="/static/CACHE/js/output.14a9d33a2805.js"></script>
+        
+  <script type="text/javascript">
+    $(function() {
+      Anywhere.startPasswordValidation($('#id_new_password1'), $('#id_new_password2'));
+      if (window.location.hash == "") {
+        $('#id_tab_list li a[href="#upgrade"]').tab('show');
+      } else {
+        $('#id_tab_list li a[href="' + window.location.hash + '"]').tab('show');
+      }
+      $('#id_tab_list li a').on('show.bs.tab', function (e) {
+        var newLocation;
+        if (window.location.hash == "") {
+          newLocation = window.location + e.target.hash;
+        } else {
+          newLocation = window.location.href.replace(window.location.hash, e.target.hash);
+        }
+        window.history.pushState('', '', newLocation);
+      });
+
+      
+    });
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      Anywhere2.initializeStudentList(
+        $('#id_students')[0],
+        {
+          url: "/api/v0/user/worklane/students/",
+          csrfToken: "cRv0VgwlNvvSft36mor1FXYrgfc37Oee2qMemflmlfjpNNLgUGEnrUJLNPOwVSWh",
+        }
+      );
+    });
+    $(document).ready(function () {
+      Anywhere2.initializeSystemImageAndDefaultPythonPicker(
+        $('#id_system_image_and_default_python_picker')[0],
+        {
+          csrfToken: "cRv0VgwlNvvSft36mor1FXYrgfc37Oee2qMemflmlfjpNNLgUGEnrUJLNPOwVSWh",
+          batteriesIncludedUrl: "/batteries_included/",
+          defaultPythonUrl: "/api/v0/user/worklane/default_python_version/",
+          defaultPython3Url: "/api/v0/user/worklane/default_python3_version/",
+          defaultSaveAndRunPythonVersionUrl: "/api/v0/user/worklane/default_save_and_run_python_version/",
+          systemImageUrl: "/api/v0/user/worklane/system_image/",
+        }
+      );
+    });
+  </script>
+
+        
+
+    </head>
+
+    <body style="height:100%;">
+       <div style="min-height: 100%; position: relative;">
+        
+  
+
+        
+  <nav class="navbar top-nav hidden-xs">
+    <div class="container">
+      <ul class="nav navbar-nav navbar-right">
+        
+<li class="">
+        <a href="" data-testid="contact_support_link" target="_parent" class="feedback_link">
+                
+                Send Feedback
+                
+        </a>
+</li>
+
+
+<li class=""><a href="/forums/" target="_parent" class="forums_link">Forums</a></li>
+<li class=""><a href="https://help.pythonanywhere.com/" target="_parent" class="help_link">Help</a>
+</li>
+<li class=""><a href="https://blog.pythonanywhere.com/" target="_parent" class="blog_link">Blog</a>
+</li>
+
+
+<li class=""><a href="/user/worklane/account/" target="_parent"
+                class="account_link">Account</a></li>
+<li class="">
+        <form action="/logout/" method="POST" target="_parent">
+                <input type="hidden" name="csrfmiddlewaretoken" value="cRv0VgwlNvvSft36mor1FXYrgfc37Oee2qMemflmlfjpNNLgUGEnrUJLNPOwVSWh">
+                <button type="submit" class="btn-link logout_link">Log out</button>
+        </form>
+</li>
+
+      </ul>
+    </div>
+  </nav>
+
+  
+
+
+
+
+  <nav class="navbar primary-navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main_nav" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <img id='id_logo' src="/static/anywhere/images/PA-logo.svg" width="225">
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="main_nav">
+        <ul class="nav navbar-nav navbar-right">
+          
+            
+  <li class=""><a id="id_dashboard_link" href="/user/worklane/">Dashboard</a></li>
+  <li class=""><a id="id_consoles_link" href="/user/worklane/consoles/">Consoles</a></li>
+  <li class=""><a id="id_files_link" href="/user/worklane/files/home/worklane">Files</a></li>
+  <li class=""><a id="id_web_app_link" href="/user/worklane/webapps/">Web</a></li>
+  <li class=""><a id="id_tasks_link" href="/user/worklane/tasks_tab/">Tasks</a></li>
+  <li class=""><a id="id_databases_link" href="/user/worklane/databases/">Databases</a></li>
+
+
+          
+          
+<li class="visible-xs">
+        <a href="" data-testid="contact_support_link" target="_parent" class="feedback_link">
+                
+                Send Feedback
+                
+        </a>
+</li>
+
+
+<li class="visible-xs"><a href="/forums/" target="_parent" class="forums_link">Forums</a></li>
+<li class="visible-xs"><a href="https://help.pythonanywhere.com/" target="_parent" class="help_link">Help</a>
+</li>
+<li class="visible-xs"><a href="https://blog.pythonanywhere.com/" target="_parent" class="blog_link">Blog</a>
+</li>
+
+
+<li class="visible-xs"><a href="/user/worklane/account/" target="_parent"
+                class="account_link">Account</a></li>
+<li class="visible-xs">
+        <form action="/logout/" method="POST" target="_parent">
+                <input type="hidden" name="csrfmiddlewaretoken" value="cRv0VgwlNvvSft36mor1FXYrgfc37Oee2qMemflmlfjpNNLgUGEnrUJLNPOwVSWh">
+                <button type="submit" class="btn-link logout_link">Log out</button>
+        </form>
+</li>
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <div class="container">
+    
+
+  </div>
+
+  
+  
+
+
+
+        
+  
+
+
+        
+
+
+  <div class="container">
+
+    <div class="tabbable">
+
+      <ul id="id_tab_list" class="nav nav-tabs" role="tablist">
+        <li>
+          <a href="#upgrade" role="tab" data-toggle="tab">Upgrade/Downgrade Account</a>
+        </li>
+        
+        <li>
+          <a href="#password" role="tab" data-toggle="tab">Security</a>
+        </li>
+        <li>
+          <a href="#email" role="tab" data-toggle="tab">Email</a>
+        </li>
+        
+        
+        <li>
+          <a href="#education" role="tab" data-toggle="tab">Education</a>
+        </li>
+        <li>
+          <a href="#api_token" data-toggle="tab">API Token</a>
+        </li>
+        <li>
+          <a href="#system_image" data-toggle="tab">System Image</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+
+        <div class="tab-pane" role="tabpanel" id="upgrade">
+          <div id="id_account_types">
+            <div class="pricing_table">
+  
+    <div class="row">
+    <div class="col-md-12">
+        <div style="padding: 21px; background-color: rgb(217, 247, 206);">
+            <p>
+                <b>All of our paid plans come with a no-quibble 30-day money-back
+                guarantee</b> &mdash; you're billed monthly and you can cancel at any time.
+                The minimum contract length is just one month.
+                You get unrestricted Internet access from
+                your applications, unlimited in-browser Python, Bash
+                and database consoles, and full SSH access to your account.
+                All accounts (<b>including free ones</b>) have screen-sharing with
+                other PythonAnywhere accounts, and free SSL support.
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    &nbsp;
+</div>
+    <div class="row" style="display: flex">
+    <ul class="col-md-6 paid_plan Developer">
+        <div class="pricing_pane">
+            <li>Developer
+                <div class="price">$10/month</div>
+                <div style="clear:both"></div>
+            </li>
+            <li>Run your Python code in the cloud from one web app and the console</li>
+            <li><b>A Python IDE in your browser</b> with unlimited Python/bash consoles</li>
+            <li>
+                <b>One web app</b> on a custom domain or <br/><code><i>your-username</i>.&#8203;pythonanywhere.com</code>
+            </li>
+            <li>
+                Enough power to run a typical <b>150,000 hit/day website</b>.<br/>
+                (<a href="#" class="web_app_hits_info_link" data-toggle="modal" data-target="#web_app_hits_info">more
+                info</a>)
+            </li>
+            <li>
+                5,000 CPU-seconds per day for consoles, scheduled tasks and always-on tasks<br/>
+                (<a class="cpu_usage_info_link" href="#" data-toggle="modal" data-target="#cpu_usage_info">more info</a>)
+            <li>IPython/Jupyter notebook support</li>
+            <li>5GB disk space</li>
+            <li class="pricing_button" style="margin-top: auto;">
+                
+
+<p>
+        
+            
+                
+                    <button class="btn btn-info btn-large plan_button paid_plan_button" data-plan-name="developer">
+                        Switch Now
+                    </button>
+                
+            
+        
+</p>
+
+            </li>
+        </div>
+    </ul>
+
+    <ul class="col-md-6 paid_plan Custom">
+        <div class="pricing_pane">
+            <li>Custom
+                <div class="price">$10 to $500/month</div>
+                <div style="clear:both"></div>
+            </li>
+            <li>Create your own combination of features! All custom plans have:</li>
+            <li><b>A Python IDE in your browser</b> with unlimited Python/bash consoles</li>
+            <li>Up to <b>20 web apps</b>, on custom domains or <br/><code><i>your-username</i>.&#8203;pythonanywhere.com</code>
+            </li>
+            <li>
+                <b>As many web workers as you need</b> to scale your site's capacity.<br/>
+                (<a href="#" class="web_app_hits_info_link" data-toggle="modal" data-target="#web_app_hits_info">more
+                info</a>)
+            </li>
+            <li>
+                Up to 100,000 CPU-seconds per day for consoles, scheduled tasks and always-on tasks<br/>
+                (<a href="#" class="cpu_usage_info_link" data-toggle="modal" data-target="#cpu_usage_info">more info</a>)
+            <li>IPython/Jupyter notebook support</li>
+            <li>As much disk space as you choose</li>
+            <li class="pricing_button">
+                
+
+<p>
+        
+            
+                
+                    <button class="btn btn-info btn-large plan_button paid_plan_button" data-plan-name="custom">
+                        Switch Now
+                    </button>
+                
+            
+        
+</p>
+
+            </li>
+        </div>
+    </ul>
+</div>
+
+<div class="row">
+    &nbsp;
+</div>
+
+  
+
+  <div class="row" style="display: flex">
+    <ul class="col-md-12 Free current_plan">
+        <div class="beginner_pane">
+            <li>Explore with a limited account</li>
+            <li>
+                Explore PythonAnywhere with <b>a limited free account</b>.  You'll get one web app at
+                <i>your-username</i><code>.pythonanywhere.com</code> and two consoles with restricted outbound Internet access.
+            </li>
+            <li class="pricing_button">
+                <p>
+    
+
+        
+
+            
+                <button class="btn btn-default" disabled="disabled">
+                    You've got one of these
+                </button>
+            
+
+        
+
+
+    
+</p>
+
+            </li>
+        </div>
+    </ul>
+</div>
+
+<div class="row">
+    &nbsp;
+</div>
+
+
+</div>
+
+<div id="cpu_usage_info" class="modal fade" style="display: none; padding: 30px;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3>What are "CPU seconds"?</h3>
+      </div>
+
+      <div class="modal-body">
+        <p>
+          <b>With every PythonAnywhere account, you get a number of
+            CPU-seconds included each day.</b>  This applies to all
+          code run through our in-browser consoles, in your scheduled
+          tasks and in your always-on tasks, but <i>does not</i> apply to your web apps.
+        </p>
+
+        <p>
+          A CPU-second is one second of
+          full-power usage on a
+          High Frequency Intel Xeon E5-2670 v2 (Ivy Bridge) Processor (one CPU
+          core on an
+          <a href="http://aws.amazon.com/ec2/instance-types/">Amazon AWS m5.xlarge instance</a>).
+          <b>Your code only uses up CPU seconds while it's actually busy</b>.
+          If your code isn't using any CPU power (maybe it's not running, or it's waiting
+          for input or for a web request to return) then it's not using
+          any CPU seconds.
+        </p>
+
+        <p>
+          <b>If you use up all of your included CPU seconds, don't worry!</b>
+          You can always buy more &mdash; and even if you don't, your
+          processes will still run, in the <b>tarpit</b>.
+        </p>
+
+        <p>
+          Tarpitted processes run at a lower priority than users who haven't
+          hit their limit yet, but they get any spare capacity that we
+          have on our server cluster, unless they're using gigabytes of
+          RAM.
+        </p>
+
+        <p>
+          Here's <a href="/tarpit/">more info about the tarpit</a>.
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="web_app_hits_info" class="modal fade" role="dialog" style="display: none; padding: 30px;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3>What do we mean by a "typical" website?  Why don't we just guarantee a certain number of hits/day capacity?</h3>
+      </div>
+
+      <div class="modal-body">
+        <p>
+          <b>We guarantee a certain amount of computing capacity for your web app,
+            but how many hits/day you can get out of that depends on you</b>.  If you
+          write a website that does tons of calculations for every request
+          then you won't be able to handle as many hits per day as our estimate.  If you write a super-efficient
+          one using a lightweight framework, you'll be able to handle more.
+          <p>
+            Our estimates
+            are based on real-world websites that we host, like
+            <a href="http://www.web2py.com">web2py.com</a>, so we're confident
+            that they're a good indicator of what a typical website will be able
+            to handle.
+          </p>
+
+          <h4>How it works, under the hood</h4>
+          <p>
+            The web app compute capacity is defined by the number of <b>web workers</b>
+            associated with your app.  Each web worker is an independent process
+            capable of serving up your entire app, so if you have more than
+            one, while one is busy handling one request another can take over.
+            If you only have one worker (or if all of your workers are busy) then
+            requests are queued up and served when a worker becomes available.
+          </p>
+          <p>
+            For sites without a lot of traffic &mdash; even if they have a lot
+            of users accessing pages occasionally &mdash; one web worker is enough.
+            But when things get busy, if two people happen to hit your app at
+            exactly the same time, it's useful to have more than one.
+          </p>
+
+          <h4>Making things faster with static files</h4>
+          <p>
+            Static files (that is, stuff that doesn't change frequently and
+            that you store in simple files on the disk, rather than creating
+            dynamically with your Python code &mdash; like CSS files or JavaScript) can
+            be configured to be served separately, without tying up your web
+            workers, using the "Static files" section of the web app configuration
+            page.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <h2>Compare our plans in detail</h2>
+
+  <table id="id_account_types_table" class="table">
+    <thead>
+      <tr>
+        <td class="description_column">
+        </td>
+        <td class="developer-column">
+          <h2 class="account_type_header">
+            Developer:
+            <span class="dollar">$</span>10<span class="sub_and_dark_blue">/month</span>
+          </h2>
+        </td>
+        <td class="custom-column">
+          <h2 class="account_type_header" style="color: #444">
+            Custom:
+            <span class="dollar">$</span>10 to <span class="dollar">$</span>500<span class="sub_and_dark_blue">/month</span>
+          </h2>
+        </td>
+        <td class="free-column">
+          <h2 class="account_type_header" style="color: #888">
+            Beginner:
+            <span class="dollar">$</span>0<span class="sub_and_dark_blue">/month</span>
+          </h2>
+        </td>
+      </tr>
+
+    </thead>
+    <tbody>
+      <tr>
+        <th>
+          <div>Monthly billing, cancel at any time</div>
+          <div style="font-weight: normal;">Or <a href="" class="feedback_link">get in touch</a> to hear about discounts if you pay for a year up front</div>
+        </th>
+        <td class="developer-column">
+          <img title="Yes" src="/static/anywhere/images/tick.png"><br/>
+          <span class="highlighted_feature_text">30-day no-quibble<br/>money-back guarantee</span>
+        </td>
+        <td class="custom-column">
+          <img title="Yes" src="/static/anywhere/images/tick.png"><br/>
+          <span class="highlighted_feature_text">30-day no-quibble<br/>money-back guarantee</span>
+        </td>
+        <td class="free-column">&nbsp;</td>
+      </tr>
+      <tr>
+        <th>
+          <div style="height: 25px;">Python web applications</div>
+          <div style="margin-left: 1em; font-weight: normal; height: 30px;">At <i>your-username</i>.pythonanywhere.com</div>
+          <div style="margin-left: 1em; font-weight: normal; height: 30px;">At your own domain</div>
+        </th>
+        <td class="developer-column">
+          <div style="height: 25px;"><span class="highlighted_feature_text">1</span></div>
+          <div style="color: #008800; height: 30px;" title="Yes"><img src="/static/anywhere/images/tick.png"></div>
+          <div style="color: #008800; height: 30px;" title="Yes"><img src="/static/anywhere/images/tick.png"></div>
+        </td>
+        <td class="custom-column">
+          <div style="height: 25px;"><span class="highlighted_feature_text">You choose</span></div>
+          <div style="color: #008800; height: 30px;" title="Yes"><img src="/static/anywhere/images/tick.png"></div>
+          <div style="color: #008800; height: 30px;" title="Yes"><img src="/static/anywhere/images/tick.png"></div>
+        </td>
+        <td class="free-column">
+          <div style="height: 25px;"><span class="highlighted_feature_text">1</span></div>
+          <div style="color: #008800; height: 30px;" title="Yes"><img src="/static/anywhere/images/tick.png"></div>
+          <div style="color: #880000; height: 25px;" title="No"><img src="/static/anywhere/images/cross.png"></div>
+        </td>
+      </tr>
+      <tr>
+        <th>Web workers per web app</th>
+        <td class="developer-column highlighted_feature_text">3</td>
+        <td class="custom-column highlighted_feature_text">You choose</td>
+        <td class="free-column text-muted">1</td>
+      </tr>
+      <tr>
+        <th>Consoles (Python, Bash, etc...)</th>
+        <td class="developer-column highlighted_feature_text">Unlimited</td>
+        <td class="custom-column highlighted_feature_text">Unlimited</td>
+        <td class="free-column text-muted">Up to 2</td>
+      </tr>
+      <tr>
+        <th>
+          <div>SSH access to your account</div>
+          <div style="font-weight: normal;">via <code>ssh.pythonanywhere.com</code></div>
+        </th>
+        <td class="developer-column"><img title="Yes" src="/static/anywhere/images/tick.png"></td>
+        <td class="custom-column"><img title="Yes" src="/static/anywhere/images/tick.png"></td>
+        <td class="free-column"><img title="No" src="/static/anywhere/images/cross.png"></td>
+      </tr>
+      <tr>
+        <th>
+          <div>Access to external internet sites</div>
+          <div style="font-weight: normal;">from your code e.g. <code>urllib</code> or <code>wget</code></div>
+        </th>
+        <td class="developer-column"><img title="Yes" src="/static/anywhere/images/tick.png"></td>
+        <td class="custom-column"><img title="Yes" src="/static/anywhere/images/tick.png"></td>
+        <td class="free-column">
+          <a href="/whitelist/">
+            Specific sites via<br>
+            HTTP(S) only
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <th>Share your consoles with other people</th>
+        <td class="developer-column"><img title="Yes" src="/static/anywhere/images/tick.png"></td>
+        <td class="custom-column"><img title="Yes" src="/static/anywhere/images/tick.png"></td>
+        <td class="free-column"><img title="Yes" src="/static/anywhere/images/tick.png"></td>
+      </tr>
+      <tr>
+        <th>
+          <div>Scheduled tasks</div>
+          <div style="font-weight: normal;">Like <code>cron</code>, but simpler</div>
+        </th>
+        <td class="developer-column highlighted_feature_text">
+          20, hourly or daily
+        </td>
+        <td class="custom-column highlighted_feature_text">
+          20, hourly or daily
+        </td>
+        <td class="free-column"><img title="No" src="/static/anywhere/images/cross.png"></td>
+      </tr>
+      <tr>
+        <th>
+          <div>Always-on tasks</div>
+          <div style="font-weight: normal;">Tasks that are always running</div>
+        </th>
+        <td class="developer-column highlighted_feature_text">
+          1
+        </td>
+        <td class="custom-column highlighted_feature_text">
+          You choose
+        </td>
+        <td class="free-column"><img title="No" src="/static/anywhere/images/cross.png"></td>
+      </tr>
+      <tr>
+        <th>
+          <div>CPU allowance</div>
+          <div style="font-weight: normal;"><a href="/tarpit/">more info</div>
+          </th>
+          <td class="developer-column highlighted_feature_text">
+            5,000 seconds
+          </td>
+          <td class="custom-column highlighted_feature_text">
+            You choose
+          </td>
+          <td class="free-column text-muted">
+            100 seconds
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <div>Bandwidth</div>
+            <div style="font-weight: normal;"><a href="/pricing/caveat">more info</div>
+            </th>
+            <td class="developer-column highlighted_feature_text">
+              Medium
+            </td>
+            <td class="custom-column highlighted_feature_text">
+              Depends on price
+            </td>
+            <td class="free-column text-muted">
+              Low
+            </td>
+          </tr>
+          <tr>
+            <th>Private file storage</th>
+            <td class="developer-column highlighted_feature_text">5GB</td>
+            <td class="custom-column highlighted_feature_text">You choose</td>
+            <td class="free-column text-muted">512MB</td>
+          </tr>
+        </tbody>
+      </table>
+
+      
+
+<div id="id_custom_settings" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">&times;</a>
+                <h2 class="modal-title" id="id_customize_title">Customize your plan</h2>
+            </div>
+
+            <div class="modal-body">
+                <p>
+                    <b><i>All paid plans support custom domains for all of your web apps.</i></b>
+                </p>
+
+                <form id="id_custom_plan_form" action="/start_custom_plan_upgrade/" method="POST">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="cRv0VgwlNvvSft36mor1FXYrgfc37Oee2qMemflmlfjpNNLgUGEnrUJLNPOwVSWh">
+
+                    
+                        <div class="feature_div">
+                            <label for="id_daily_cpu_limit_seconds" class="sliderlabel">
+
+
+                                CPU time per day:
+
+                                
+
+                                    <span id="id_daily_cpu_limit_seconds_text"></span>
+
+
+                                    seconds
+                                    
+                                        <span class="small pull-right">
+                                            <i>Your current plan has
+                                                <span id="id_current_value_daily_cpu_limit_seconds">100</span>.
+                                            </i>
+                                        </span>
+                                    
+                                
+                                <a class="feature_tooltip" href="#" data-toggle="tooltip" title="The number of seconds of CPU (non-idle) time you get per day for non-web-app processing">[?]</a>
+                            </label>
+                            
+                                <div class="slidercontainer">
+                                    <div id="id_daily_cpu_limit_seconds" name="daily_cpu_limit_seconds"></div>
+                                </div>
+                            
+                            
+                        </div>
+                    
+                        <div class="feature_div">
+                            <label for="id_max_webapps" class="sliderlabel">
+
+
+                                Number of web apps:
+
+                                
+
+                                    <span id="id_max_webapps_text"></span>
+
+
+                                    
+                                    
+                                        <span class="small pull-right">
+                                            <i>Your current plan has
+                                                <span id="id_current_value_max_webapps">1</span>.
+                                            </i>
+                                        </span>
+                                    
+                                
+                                <a class="feature_tooltip" href="#" data-toggle="tooltip" title="The maximum number of web applications you can run">[?]</a>
+                            </label>
+                            
+                                <div class="slidercontainer">
+                                    <div id="id_max_webapps" name="max_webapps"></div>
+                                </div>
+                            
+                            
+                        </div>
+                    
+                        <div class="feature_div">
+                            <label for="id_uwsgi_workers" class="sliderlabel">
+
+
+                                Number of web workers:
+
+                                
+
+                                    <span id="id_uwsgi_workers_text"></span>
+
+
+                                    
+                                    
+                                        <span class="small pull-right">
+                                            <i>Your current plan has
+                                                <span id="id_current_value_uwsgi_workers">1</span>.
+                                            </i>
+                                        </span>
+                                    
+                                
+                                <a class="feature_tooltip" href="#" data-toggle="tooltip" title="The number of processes that run to handle each of your web apps.  Each web app has the same number of workers.">[?]</a>
+                            </label>
+                            
+                                <div class="slidercontainer">
+                                    <div id="id_uwsgi_workers" name="uwsgi_workers"></div>
+                                </div>
+                            
+                            
+                        </div>
+                    
+                        <div class="feature_div">
+                            <label for="id_max_always_on_tasks" class="sliderlabel">
+
+
+                                Number of always-on tasks:
+
+                                
+
+                                    <span id="id_max_always_on_tasks_text"></span>
+
+
+                                    
+                                    
+                                        <span class="small pull-right">
+                                            <i>Your current plan has
+                                                <span id="id_current_value_max_always_on_tasks">0</span>.
+                                            </i>
+                                        </span>
+                                    
+                                
+                                <a class="feature_tooltip" href="#" data-toggle="tooltip" title="Scripts that are kept running all the time, and restarted if they crash.">[?]</a>
+                            </label>
+                            
+                                <div class="slidercontainer">
+                                    <div id="id_max_always_on_tasks" name="max_always_on_tasks"></div>
+                                </div>
+                            
+                            
+                        </div>
+                    
+                        <div class="feature_div">
+                            <label for="id_disk_space_gb" class="sliderlabel">
+
+
+                                Disk space:
+
+                                
+
+                                    <span id="id_disk_space_gb_text"></span>
+
+
+                                    GB
+                                    
+                                        <span class="small pull-right">
+                                            <i>Your current plan has
+                                                <span id="id_current_value_disk_space_gb">0.5</span>.
+                                            </i>
+                                        </span>
+                                    
+                                
+                                <a class="feature_tooltip" href="#" data-toggle="tooltip" title="Your storage">[?]</a>
+                            </label>
+                            
+                                <div class="slidercontainer">
+                                    <div id="id_disk_space_gb" name="disk_space_gb"></div>
+                                </div>
+                            
+                            
+                        </div>
+                    
+                        <div class="feature_div">
+                            <label for="id_postgres_enabled">
+
+
+                                Postgres server:
+
+                                
+                                <a class="feature_tooltip" href="#" data-toggle="tooltip" title="All PythonAnywhere accounts come with a MySQL server.  If you want Postgres, select this option for a private Postgres server">[?]</a>
+                            </label>
+                            
+                            
+                                <input id="id_postgres_enabled" type="checkbox" name="postgres_enabled" />
+                            
+                        </div>
+                    
+                        <div class="feature_div">
+                            <label for="id_postgres_disk_space_gb" class="sliderlabel">
+
+
+                                Postgres disk space:
+
+                                
+
+                                    <span id="id_postgres_disk_space_gb_text"></span>
+
+
+                                    GB
+                                    
+                                        <span class="small pull-right">
+                                            <i>Your current plan has
+                                                <span id="id_current_value_postgres_disk_space_gb">1</span>.
+                                            </i>
+                                        </span>
+                                    
+                                
+                                <a class="feature_tooltip" href="#" data-toggle="tooltip" title="The disk space available to your private Postgres server.">[?]</a>
+                            </label>
+                            
+                                <div class="slidercontainer">
+                                    <div id="id_postgres_disk_space_gb" name="postgres_disk_space_gb"></div>
+                                </div>
+                            
+                            
+                        </div>
+                    
+
+                    <div class="price_footer">
+                        <span class="lead" style="text-align: right;">
+                          Price for this plan: $<strong id="id_custom_plan_price"></strong> / month
+                        </span>
+                        
+                            <button type="submit" id="id_upgrade_to_custom_button" class="btn btn-info btn-large pull-right">Sign up for this plan</button>
+                        
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $.extend(
+            Anywhere.urls,
+            {
+                plan_price: "/accounts/plan_price",
+            }
+        );
+
+        $('.feature_tooltip').tooltip();
+
+        require.config({
+            paths: {
+                "custom_plan_settings": "/static/anywhere/scripts/custom_plan_settings"
+            }
+        });
+
+        require(["custom_plan_settings"], function(custom_plan_settings) {
+            custom_plan_settings.initializeComponents(
+                [
+                    
+                        
+                            {
+                                slider: $("#id_daily_cpu_limit_seconds"),
+                                text: $("#id_daily_cpu_limit_seconds_text"),
+                                min: 5000,
+                                max: 200000,
+                                step: 1000,
+                            },
+                        
+                    
+                        
+                            {
+                                slider: $("#id_max_webapps"),
+                                text: $("#id_max_webapps_text"),
+                                min: 1,
+                                max: 40,
+                                step: 1,
+                            },
+                        
+                    
+                        
+                            {
+                                slider: $("#id_uwsgi_workers"),
+                                text: $("#id_uwsgi_workers_text"),
+                                min: 3,
+                                max: 70,
+                                step: 1,
+                            },
+                        
+                    
+                        
+                            {
+                                slider: $("#id_max_always_on_tasks"),
+                                text: $("#id_max_always_on_tasks_text"),
+                                min: 1,
+                                max: 20,
+                                step: 1,
+                            },
+                        
+                    
+                        
+                            {
+                                slider: $("#id_disk_space_gb"),
+                                text: $("#id_disk_space_gb_text"),
+                                min: 5,
+                                max: 200,
+                                step: 1,
+                            },
+                        
+                    
+                        
+                    
+                        
+                            {
+                                slider: $("#id_postgres_disk_space_gb"),
+                                text: $("#id_postgres_disk_space_gb_text"),
+                                min: 1,
+                                max: 250,
+                                step: 1,
+                            },
+                        
+                    
+                ],
+                [
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            {
+                                checkbox: $("#id_postgres_enabled"),
+                                linkedSlider: $("#id_postgres_disk_space_gb"),
+                            },
+                        
+                    
+                        
+                    
+                ],
+                {"free": {"daily_cpu_limit_seconds": 100, "disk_space_gb": 0.5, "max_webapps": 1, "uwsgi_workers": 1, "max_always_on_tasks": 0, "postgres_enabled": false, "postgres_disk_space_gb": 1}, "developer": {"daily_cpu_limit_seconds": 5000, "disk_space_gb": 5, "max_webapps": 1, "uwsgi_workers": 3, "max_always_on_tasks": 1, "postgres_enabled": false, "postgres_disk_space_gb": 1}, "custom": {"daily_cpu_limit_seconds": 5000, "disk_space_gb": 10, "max_webapps": 4, "uwsgi_workers": 4, "max_always_on_tasks": 2, "postgres_enabled": false, "postgres_disk_space_gb": 1}},
+                $("#id_custom_plan_price"),
+                $("#id_custom_settings"),
+                $(".paid_plan_button")
+            )
+        });
+    });
+</script>
+
+
+          </div>
+        </div>
+
+        
+
+        <div class="tab-pane" role="tabpanel" id="password">
+          <div class="row top-buffer">
+            <div class="col-md-7 col-md-offset-1">
+              <h2>Change your password:</h2>
+
+              <form class="form" method="post" action=".">
+                <input type="hidden" name="csrfmiddlewaretoken" value="cRv0VgwlNvvSft36mor1FXYrgfc37Oee2qMemflmlfjpNNLgUGEnrUJLNPOwVSWh">
+                
+                  <div class="form-group">
+                    <input type="password" name="old_password" placeholder="Your old password" class="form-control" required id="id_old_password">
+                    
+                  </div>
+                
+                  <div class="form-group">
+                    <input type="password" name="new_password1" placeholder="Your new password" class="form-control" required id="id_new_password1">
+                    
+                  </div>
+                
+                  <div class="form-group">
+                    <input type="password" name="new_password2" placeholder="Your new password again" class="form-control" required id="id_new_password2">
+                    
+                  </div>
+                
+
+                <button class="btn btn-info" type="submit" id="id_submit_password_change" name="anywhere_password">
+                  Change password
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="row top-buffer">
+            <div class="col-md-7 col-md-offset-1">
+              
+
+                <h2>Set up Two-Factor Authentication:</h2>
+
+                <p>
+                  Two-Factor Authentication increases the security of
+                  your PythonAnywhere account.  You'll need a smartphone
+                  with an app like Google Authenticator installed.
+                  It will generate a number every minute or so, and
+                  you'll have to enter that number every time you
+                  log in to PythonAnywhere.  This means that even
+                  if someone steals or guesses your password, they
+                  won't be able to get in unless they also steal your
+                  phone.
+                </p>
+
+                <a
+                  id="id_setup_tfa"
+                  href="/user/worklane/account/two_factor_auth_setup/"
+                  class="btn btn-success">
+                  Click here to set up two-factor authentication
+                </a>
+
+              
+            </div>
+          </div>
+
+        </div>
+
+        <div class="tab-pane" role="tabpanel" id="email">
+          <div class="row top-buffer">
+            <div class="col-md-7 col-md-offset-1">
+              <h2>Update your email address:</h2>
+              
+
+              <form class="form" method="post" action=".">
+                <input type="hidden" name="csrfmiddlewaretoken" value="cRv0VgwlNvvSft36mor1FXYrgfc37Oee2qMemflmlfjpNNLgUGEnrUJLNPOwVSWh">
+
+                <div class="form-group">
+
+                  <input name="email" id="id_current_email" class="form-control" value="victormwangi76@gmail.com" />
+
+                  <div class="help-block">
+                    
+                  </div>
+
+                </div>
+
+                <button class="btn btn-primary" type="submit" id="id_update_email_button" name="update_email">
+                  Update and send confirmation email
+                </button>
+
+                <div class="help-block">We will send you an email with a link to confirm this address</div>
+
+              </form>
+            </div>
+          </div>
+
+          <div class="row top-buffer">
+            <div class="col-md-7 col-md-offset-1">
+              <h2>Manage your email preferences:</h2>
+
+              <form class="form" method="post" action=".">
+                <input type="hidden" name="csrfmiddlewaretoken" value="cRv0VgwlNvvSft36mor1FXYrgfc37Oee2qMemflmlfjpNNLgUGEnrUJLNPOwVSWh">
+                
+                  <div class="checkbox">
+                    <label style="vertical-align: text-bottom;">
+                      <input type="checkbox" name="subscribed_engagement_emails" id="id_subscribed_engagement_emails" checked>
+                      <span title="One email a week (for a few weeks) to let you know about features of PythonAnywhere that you may not know about.">Hints and tips</span>
+                    </label>
+                  </div>
+                
+                  <div class="checkbox">
+                    <label style="vertical-align: text-bottom;">
+                      <input type="checkbox" name="subscribed_downtime_alerts" id="id_subscribed_downtime_alerts">
+                      <span title="Emails that let you know in advance of system maintenance that will cause downtime.">System downtime alerts</span>
+                    </label>
+                  </div>
+                
+                  <div class="checkbox">
+                    <label style="vertical-align: text-bottom;">
+                      <input type="checkbox" name="subscribed_resource_warnings" id="id_subscribed_resource_warnings" checked>
+                      <span title="Emails that let you know when you have exceeded or are approaching a resource limitation (e.g. cpu usage or disk quota) that could affect your service.">Resource Warnings</span>
+                    </label>
+                  </div>
+                
+                  <div class="checkbox">
+                    <label style="vertical-align: text-bottom;">
+                      <input type="checkbox" name="subscribed_teacher_nomination_alerts" id="id_subscribed_teacher_nomination_alerts" checked>
+                      <span title="Emails that let you know about teacher and student actions that affect your account.">Teacher/student alerts</span>
+                    </label>
+                  </div>
+                
+                  <div class="checkbox">
+                    <label style="vertical-align: text-bottom;">
+                      <input type="checkbox" name="subscribed_newsletter" id="id_subscribed_newsletter">
+                      <span title="An occasional round-up of news from PythonAnywhere, including new features that we have added.">Newsletter (may include special offers or other marketing content)</span>
+                    </label>
+                  </div>
+                
+
+                <p>
+                  We will always email you with any essential information &mdash;
+                  for example, if your account might be deleted due to inactivity,
+                  if we can't collect payment for a paid account, or
+                  if you have a free website that is going to expire.
+                </p>
+
+                <button class="btn btn-primary" type="submit" id="id_update_email_subscriptions" name="update_email_subscriptions">
+                  Save
+                </button>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" role="tabpanel" id="invoices">
+          <div class="row">
+            <div class="col-md-7 col-md-offset-1">
+              <h2>Invoices</h2>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Invoice number</th>
+                    <th>Date</th>
+                    <th>Net amount</th>
+                    <th>VAT amount</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tab-pane" role="tabpanel" id="education">
+          <div class="row">
+            <div class="col-md-7 col-md-offset-1">
+              <p>
+                As part of our <a href="https://help.pythonanywhere.com/pages/Education">Education beta</a>,
+                users can now nominate another user to be their "teacher".
+                <a href="https://help.pythonanywhere.com/pages/Education">Find out more.</a>
+              </p>
+
+              <h3 class='property_group_header'>Your teacher</h3>
+
+              <p>
+                You can set who your teacher is below.  <b>Warning!</b> this means they have <u>full access</u> to all your consoles, files
+                and folders on PythonAnywhere, so you should make sure it's someone you trust!
+              </p>
+              <p>
+                You can revoke their access at any time by resetting the input field below.  Blank means you
+                don't have a teacher.
+              </p>
+            </div>
+
+            <div class="col-md-7 col-md-offset-1">
+              <a
+                id="id_teacher_editable_field"
+                href="#"
+                data-pk="-1"
+                data-name="teacher"
+                data-value=""
+                data-emptytext="Enter your teacher's username"
+                data-url="/user/worklane/account/nominate_teacher/">
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7 col-md-offset-1">
+              <h3 class='property_group_header'>Your students</h3>
+              <p>
+                These are people who have named you as their teacher.  You have <u>full access</u> to all your students' consoles, files
+                and folders on PythonAnywhere.
+              </p>
+              <p>
+                You can remove them as students at any time using the list below.
+              </p>
+              <div id="id_students">
+                <p>LOADING.... if this doesn't disappear, you may have disabled JavaScript or you may need to upgrade your browser. Please contact us if you are confused.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="system_image">
+          <div class="row">
+            <div class="col-md-9 col-md-offset-1">
+              <div id="id_system_image_and_default_python_picker">
+                <p>LOADING.... if this doesn't disappear, you may have disabled JavaScript or you may need to upgrade your browser. Please contact us if you are confused.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="api_token">
+          <div class="row">
+            <div class="col-md-9 col-md-offset-1">
+              <h2>Your API token</h2>
+              
+
+                <p>You do not have an API token yet.</p>
+
+                <form method="POST" action="/user/worklane/api/new_token">
+                  <input type="hidden" name="csrfmiddlewaretoken" value="cRv0VgwlNvvSft36mor1FXYrgfc37Oee2qMemflmlfjpNNLgUGEnrUJLNPOwVSWh">
+                  <button id="id_create_new_api_token" type="submit" class="btn btn-primary">Create a new API token</button>
+                </form>
+
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+
+        
+  <div class="footer-spacer"></div>
+  <footer id="id_copyright_div" class="footer">
+    <p>
+      Copyright &copy; 2011-2026 <a href="/about/company_details/">PythonAnywhere LLP</a>
+      &mdash;
+      <a href="/terms/">Terms</a>
+      &mdash;
+      <a href="/privacy/">Privacy & Cookies</a><br/>
+      </p>
+  </footer>
+
+      </div>
+
+        
+
+
+        
+
+<div id="id_feedback_dialog" title="Send Feedback"
+    style="display:none">
+    <div id="id_feedback_dialog_blurb_big" class="dialog_blurb_big">
+        
+        Thank you for your feedback.
+        
+    </div>
+    <div id="id_feedback_dialog_blurb_small">
+        <!-- CTA disclaimer section -->
+        
+        <div id="id_cta_disclaimer" class="cta_disclaimer">
+            <div id="id_disclaimer_text">
+                We review all feedback, but we cannot promise a response.
+                <br />
+                <br />
+                Did you know you can upgrade your plan to get access to Customer Support?
+            </div>
+            <div class="dialog_buttons center">
+                <button class="btn btn-primary" id="id_feedback_dialog_upgrade_button"
+                    onclick='window.top.location="/pricing/";'>
+                    
+                    Upgrade Now
+                    
+                </button>
+            </div>
+        </div>
+        
+
+        To help us assist you as efficiently as possible, please include:
+        <ol>
+            <li>What you were trying to do.</li>
+            <li>What you expected to happen.</li>
+            <li>What actually happened including any error messages or screenshots.</li>
+            <li>Steps to reproduce the issue.</li>
+        </ol>
+    </div>
+
+    <textarea id="id_feedback_dialog_text" rows="6"></textarea>
+    <input id="id_feedback_dialog_email_address" type="text"
+        placeholder="Email address (optional - only necessary if you would like us to contact you)" />
+
+    <div id="id_feedback_dialog_error" style="display: none">
+        Sorry, there was a problem connecting to the server. Please try again in a few moments.
+    </div>
+    <div id="id_feedback_dialog_rate_limit_error" style="display: none">
+        
+        Sorry, you have reached the sending limit for feedback. Please try again in a few moments.
+        
+    </div>
+    <div id="id_feedback_dialog_success" style="display: none">
+        
+        Thank you for your feedback. We review all feedback, but we cannot promise a response.
+        
+    </div>
+
+    <div class="dialog_buttons">
+        <img id="id_feedback_dialog_spinner" src="/static/anywhere/images/spinner-small.gif" />
+        <button class="btn btn-primary" id="id_feedback_dialog_ok_button">OK</button>
+        <button class="btn btn-default" id="id_feedback_dialog_cancel_button">Cancel</button>
+    </div>
+
+    <div id="id_feedback_dialog_only_close_button" style="display: none">
+        <button class="btn btn-primary" id="id_feedback_dialog_close_button">Close</button>
+    </div>
+</div>
+
+        
+  <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+
+        <!-- preload font awesome fonts to avoid glitch when switching icons -->
+        <div style="width: 0; height: 0; overflow: hidden"><i class="fa fa-square-o fa-3x" ></i></div>
+    </body>
+</html>

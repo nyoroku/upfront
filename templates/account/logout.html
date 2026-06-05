@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Out — Upfront{% endblock %}
+
+{% block content %}
+<div class="min-h-[70vh] flex items-center justify-center px-4 py-16 bg-slate-50">
+    <div class="w-full max-w-sm text-center">
+        <div class="bg-white rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 p-10">
+            <h1 class="text-2xl font-extrabold text-brand-900 mb-3">Sign Out</h1>
+            <p class="text-[14px] text-slate-400 mb-6">Are you sure you want to sign out?</p>
+            <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                <button type="submit"
+                    class="w-full py-3 rounded-full bg-red-500 text-white font-bold text-[14px] hover:bg-red-600 transition-all shadow-lg shadow-red-500/20">Sign
+                    Out</button>
+            </form>
+            <a href="{% url 'home' %}"
+                class="block mt-4 text-[13px] text-slate-400 hover:text-brand-500 font-medium transition-colors">Cancel</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

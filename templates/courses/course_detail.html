@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ course.title }} — Upfront{% endblock %}
+{% block page_title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <a href="{% url 'courses:course_list' %}"
+        class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-slate-500 hover:text-brand-600 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+        Back to Courses
+    </a>
+
+    <!-- Course Header -->
+    <div class="card-wl p-8 fade-up">
+        <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="flex-1">
+                <span
+                    class="inline-flex items-center px-3 py-1 rounded-full bg-brand-50 text-brand-600 text-[11px] font-extrabold uppercase tracking-wide border border-brand-100 mb-4">{{
+                    course.get_exam_type_display }}</span>
+                {% if course.is_free %}
+                <span
+                    class="inline-flex items-center px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-[11px] font-extrabold uppercase tracking-wide border border-emerald-100 mb-4 ml-2">FREE</span>
+                {% endif %}
+                <h1 class="text-2xl md:text-3xl font-display font-bold text-brand-900 tracking-tight mb-3">
+                    {{ course.title }}</h1>
+                <div class="text-[15px] text-slate-600 leading-relaxed">{{ course.description|safe }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Module List -->
+    <div class="fade-up">
+        <p class="overline mb-2">Course Content</p>
+        <h2 class="text-2xl font-display font-bold text-brand-900 mb-6">Modules</h2>
+
+        <div class="space-y-3">
+            {% for module in modules %}
+            <div class="card-wl p-5 flex items-center gap-4 group hover:border-brand-200 transition-colors">
+                <div
+                    class="w-11 h-11 rounded-xl flex items-center justify-center text-[15px] font-bold shrink-0
+                    {% if module.pk in progress_map %}bg-brand-500 text-white{% else %}bg-slate-50 text-slate-400 border border-slate-200{% endif %}">
+                    {% if module.pk in progress_map %}
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {% else %}{{ module.order }}{% endif %}
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h3 class="font-bold text-[15px] text-slate-900 truncate">{{ module.title }}</h3>
+                    <div class="flex items-center gap-3 text-[13px] font-medium text-slate-500 mt-0.5">
+                        {% if module.duration_minutes %}<span>{{ module.duration_minutes }} min</span>{% endif %}
+                        {% if module.is_preview %}<span
+                            class="text-brand-600 font-bold uppercase tracking-wide text-[11px]">Preview</span>{% endif
+                        %}
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                    {% if module.video_url %}
+                    <a href="{{ module.video_url }}" target="_blank"
+                        class="p-2 rounded-xl text-slate-400 hover:text-brand-600 hover:bg-brand-50 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                        </svg>
+                    </a>
+                    {% endif %}
+                    {% for quiz in module.quizzes.all %}
+                    <a href="{% url 'courses:quiz_start' course.slug quiz.pk %}"
+                        class="px-4 py-2 rounded-full bg-brand-50 border border-brand-100 text-brand-600 text-[13px] font-bold hover:bg-brand-100 transition-colors">
+                        Take Quiz
+                    </a>
+                    {% endfor %}
+                    <form hx-post="{% url 'courses:module_complete' course.slug module.pk %}" hx-target="#progress-bar"
+                        hx-swap="outerHTML">
+                        {% csrf_token %}
+                        <button type="submit"
+                            class="p-2 rounded-xl text-slate-400 hover:text-brand-600 hover:bg-brand-50 transition-colors"
+                            title="Mark Complete">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="card-wl p-6 fade-up" id="progress-bar">
+        {% with completed=0 total=modules.count %}
+        <div class="flex items-center justify-between text-[14px] font-bold mb-3">
+            <span class="text-slate-900">Your Progress</span>
+            <span class="text-brand-600">0 of {{ total }} modules</span>
+        </div>
+        <div class="w-full bg-slate-100 rounded-full h-3.5 overflow-hidden">
+            <div class="bg-gradient-to-r from-brand-500 to-accent h-full rounded-full transition-all duration-700"
+                style="width: 0%"></div>
+        </div>
+        {% endwith %}
+    </div>
+</div>
+{% endblock %}

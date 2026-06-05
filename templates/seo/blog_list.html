@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Journal — Upfront Physiotherapy{% endblock %}
+{% block meta_description %}Expert physiotherapy insights, injury recovery guides, rehabilitation tips, and patient success stories by Dan Mwangi Gichobi.{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="text-center mb-14">
+        <p class="text-[12px] font-bold text-brand-500 uppercase tracking-[0.2em] mb-3">Insights & Guides</p>
+        <h1 class="text-3xl md:text-[42px] font-extrabold text-brand-900 leading-tight">Upfront <span
+                class="text-highlight">Journal</span></h1>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="flex flex-wrap gap-2 mb-10 justify-center">
+        <a href="{% url 'seo:blog_list' %}"
+            class="px-5 py-2 rounded-full text-[13px] font-semibold transition-all {% if not current_category %}bg-brand-500 text-white shadow-md{% else %}text-slate-500 hover:text-brand-500 hover:bg-brand-50 border border-slate-200{% endif %}">All</a>
+        {% for cat in categories %}
+        <a href="{% url 'seo:blog_list' %}?category={{ cat.slug }}"
+            class="px-5 py-2 rounded-full text-[13px] font-semibold transition-all {% if current_category == cat.slug %}bg-brand-500 text-white shadow-md{% else %}text-slate-500 hover:text-brand-500 hover:bg-brand-50 border border-slate-200{% endif %}">{{cat.name }}</a>
+        {% endfor %}
+    </div>
+
+    <!-- Featured Post -->
+    {% if featured %}
+    <a href="{% url 'seo:blog_detail' featured.slug %}" class="block group mb-12">
+        <div
+            class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 md:flex">
+            {% if featured.featured_image %}
+            <div class="md:w-2/5 h-56 md:h-auto overflow-hidden">
+                <img src="{{ featured.featured_image.url }}" alt="{{ featured.featured_image_alt }}"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            </div>
+            {% endif %}
+            <div class="p-8 md:flex-1 flex flex-col justify-center">
+                <span class="text-[11px] font-bold text-brand-500 uppercase tracking-wider mb-3">Featured</span>
+                <h2 class="text-2xl font-extrabold text-brand-900 mb-3 group-hover:text-brand-500 transition-colors">{{featured.title }}</h2>
+                <p class="text-[14px] text-slate-500 leading-relaxed mb-4">{{ featured.excerpt }}</p>
+                <div class="flex items-center gap-3 text-[12px] text-slate-400">
+                    {% if featured.author %}<span>{{ featured.author.get_full_name }}</span><span>·</span>{% endif %}
+                    <span>{{ featured.reading_time_minutes }} min read</span>
+                    {% if featured.published_at %}<span>·</span><span>{{ featured.published_at|date:"M d, Y" }}</span>{%endif %}
+                </div>
+            </div>
+        </div>
+    </a>
+    {% endif %}
+
+    <!-- Post Grid -->
+    {% if posts %}
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for post in posts %}
+        <a href="{% url 'seo:blog_detail' post.slug %}"
+            class="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            {% if post.featured_image %}
+            <div class="h-44 overflow-hidden">
+                <img src="{{ post.featured_image.url }}" alt="{{ post.featured_image_alt }}"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            </div>
+            {% else %}
+            <div class="h-44 bg-gradient-to-br from-brand-50 to-green-50 flex items-center justify-center">
+                <svg class="w-10 h-10 text-brand-200" fill="none" stroke="currentColor" stroke-width="1"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25H5.625a2.25 2.25 0 01-2.25-2.25V6.375c0-.621.504-1.125 1.125-1.125h2.25" />
+                </svg>
+            </div>
+            {% endif %}
+            <div class="p-6">
+                {% if post.category %}<span class="text-[10px] font-bold text-brand-500 uppercase tracking-wider">{{post.category.name }}</span>{% endif %}
+                <h3
+                    class="text-lg font-extrabold text-brand-900 mt-2 mb-2 group-hover:text-brand-500 transition-colors line-clamp-2">
+                    {{ post.title }}</h3>
+                <p class="text-[13px] text-slate-400 leading-relaxed line-clamp-3 mb-4">{{ post.excerpt }}</p>
+                <div class="text-[11px] text-slate-300 font-medium">{{ post.reading_time_minutes }} min · {{post.published_at|date:"M d" }}</div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-20">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-brand-50 flex items-center justify-center">
+            <svg class="w-8 h-8 text-brand-200" fill="none" stroke="currentColor" stroke-width="1.5"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5" />
+            </svg>
+        </div>
+        <h3 class="text-xl font-extrabold text-brand-900 mb-2">No posts yet</h3>
+        <p class="text-slate-400 text-[14px]">Check back soon for insights and guides.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

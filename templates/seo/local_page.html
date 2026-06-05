@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page.seo_title }} — Upfront{% endblock %}
+{% block meta_description %}{{ page.seo_description }}{% endblock %}
+{% block extra_meta %}
+{% if page.og_image %}
+<meta property="og:image" content="{{ page.og_image.url }}">{% endif %}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ page.seo_title }}">
+<meta property="og:description" content="{{ page.seo_description }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ page.title|escapejs }}",
+  "description": "{{ page.seo_description|escapejs }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Upfront"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ request.scheme }}://{{ request.get_host }}/"},
+      {"@type": "ListItem", "position": 2, "name": "Destinations", "item": "{{ request.scheme }}://{{ request.get_host }}/destinations/"},
+      {"@type": "ListItem", "position": 3, "name": "{{ page.title|escapejs }}"}
+    ]
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section class="bg-brand-900 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(0,128,96,0.3),transparent)]">
+    </div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div class="max-w-2xl">
+            <span
+                class="inline-flex items-center px-4 py-1.5 rounded-full bg-accent/20 text-accent text-[11px] font-bold tracking-wider uppercase mb-6">{{page.get_destination_display}}</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-[1.1] mb-5">{{ page.hero_headline }}</h1>
+            {% if page.hero_subheadline %}
+            <p class="text-lg text-white/60 leading-relaxed mb-8">{{ page.hero_subheadline }}</p>
+            {% endif %}
+            <a href="{{ page.cta_url }}"
+                class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent text-brand-900 font-bold text-[15px] hover:bg-accent/90 transition-all shadow-lg shadow-accent/30">
+                {{ page.cta_text }}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+{% if page.stat_1_label %}
+<section class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto -mt-24 relative z-10">
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-100 grid grid-cols-3 divide-x divide-slate-100">
+            {% if page.stat_1_label %}
+            <div class="py-8 text-center">
+                <p class="text-2xl md:text-3xl font-extrabold text-brand-900">{{ page.stat_1_value }}</p>
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-1">{{ page.stat_1_label }}
+                </p>
+            </div>
+            {% endif %}
+            {% if page.stat_2_label %}
+            <div class="py-8 text-center">
+                <p class="text-2xl md:text-3xl font-extrabold text-brand-900">{{ page.stat_2_value }}</p>
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-1">{{ page.stat_2_label }}
+                </p>
+            </div>
+            {% endif %}
+            {% if page.stat_3_label %}
+            <div class="py-8 text-center">
+                <p class="text-2xl md:text-3xl font-extrabold text-brand-900">{{ page.stat_3_value }}</p>
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-1">{{ page.stat_3_label }}
+                </p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Body -->
+<section class="py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto prose-wl">
+        {{ page.body|safe }}
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+    <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-brand-900 mb-5">Ready to Begin?</h2>
+        <a href="{{ page.cta_url }}"
+            class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-500 text-white font-bold text-[15px] hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/25">
+            {{ page.cta_text }}
+        </a>
+    </div>
+</section>
+{% endblock %}

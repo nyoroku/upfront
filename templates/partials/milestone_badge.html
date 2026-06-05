@@ -1,0 +1,33 @@
+<!-- Milestone Status Badge -->
+<span id="badge-{{ milestone.template.slug }}" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] uppercase tracking-wide font-bold transition-colors
+      {% if milestone.status == 'COMPLETED' %}bg-brand-50 text-brand-700 border border-brand-200
+      {% elif milestone.status == 'IN_PROGRESS' %}bg-blue-50 text-blue-700 border border-blue-200
+      {% elif milestone.status == 'PENDING_REVIEW' %}bg-amber-50 text-amber-700 border border-amber-200
+      {% else %}bg-slate-50 text-slate-500 border border-slate-200{% endif %}" {% if milestone.status == 'IN_PROGRESS' or milestone.status == ' PENDING_REVIEW' %} hx-get="{% url 'lanes:milestone_status' milestone.template.slug %}"
+    hx-trigger="every 5s" hx-swap="outerHTML" {% endif %}>
+    {% if milestone.status == 'COMPLETED' %}
+    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd"
+            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+            clip-rule="evenodd" />
+    </svg>
+    Completed
+    {% elif milestone.status == 'IN_PROGRESS' %}
+    <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.6)]"></span>
+    In Progress
+    {% elif milestone.status == 'PENDING_REVIEW' %}
+    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z"
+            clip-rule="evenodd" />
+    </svg>
+    Pending Review
+    {% else %}
+    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd"
+            d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+            clip-rule="evenodd" />
+    </svg>
+    Locked
+    {% endif %}
+</span>

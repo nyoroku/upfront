@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Payment Status — Upfront{% endblock %}
+{% block page_title %}Payment Status{% endblock %}
+
+{% block content %}
+<div class="max-w-lg mx-auto">
+    <div class="bg-navy-800 rounded-2xl border border-navy-600/30 p-8">
+        {% if transaction.status == 'SUCCESS' %}
+        {% include 'partials/payment_success.html' %}
+        {% elif transaction.status == 'FAILED' or transaction.status == 'CANCELLED' or transaction.status == 'TIMEOUT'
+        %}
+        {% include 'partials/payment_error.html' %}
+        {% else %}
+        {% include 'partials/payment_pending.html' %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

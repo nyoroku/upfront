@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if destination_name %}{{ destination_name }} Physiotherapy Pathways{% else %}Destinations{% endif %} —
+Upfront{% endblock %}
+{% block meta_description %}{% if destination_name %}Explore physiotherapy pathways and rehabilitation services in
+{{destination_name }}.{% else %}Explore professional physiotherapy and rehabilitation services. Find
+destination-specific guides, requirements, and pathways.{% endif %}{% endblock %}
+
+{% block extra_meta %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "{% if destination_name %}{{ destination_name }} Physiotherapy Pathways{% else %}Physiotherapy Destination Guides{% endif %}",
+  "description": "{% if destination_name %}Physiotherapy pathways in {{ destination_name }}{% else %}Comprehensive physiotherapy destination guides{% endif %}",
+  "numberOfItems": {{ pages|length }},
+  "itemListElement": [
+    {% for page in pages %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.counter }},
+      "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'seo:local_page_detail' page.slug %}",
+      "name": "{{ page.title|escapejs }}"
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="text-center mb-14">
+        <p class="text-[12px] font-bold text-brand-500 uppercase tracking-[0.2em] mb-3">{% if destination_name %}{{destination_name }}{% else %}Explore{% endif %}</p>
+        {% if destination_name %}
+        <h1 class="text-3xl md:text-[42px] font-extrabold text-brand-900 leading-tight">{{ destination_name }} <span
+                class="text-highlight">Pathways</span></h1>
+        {% else %}
+        <h1 class="text-3xl md:text-[42px] font-extrabold text-brand-900 leading-tight">Destination <span
+                class="text-highlight">Guides</span></h1>
+        {% endif %}
+    </div>
+
+    {% if pages %}
+    <div class="grid md:grid-cols-2 gap-6">
+        {% for page in pages %}
+        <a href="{% url 'seo:local_page_detail' page.slug %}"
+            class="group bg-white rounded-2xl border border-slate-100 p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <span class="text-[11px] font-bold text-brand-500 uppercase tracking-wider">{{page.get_destination_display}}</span>
+            <h2 class="text-xl font-extrabold text-brand-900 mt-2 mb-3 group-hover:text-brand-500 transition-colors">
+                {{page.title }}</h2>
+            <p class="text-[14px] text-slate-500 leading-relaxed">{{ page.hero_subheadline|truncatewords:30 }}</p>
+            <span
+                class="inline-flex items-center gap-1 text-brand-500 text-[14px] font-bold mt-4 group-hover:gap-2 transition-all">
+                Read guide <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+            </span>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-20">
+        <h3 class="text-xl font-extrabold text-brand-900 mb-2">No destination guides yet</h3>
+        <p class="text-slate-400 text-[14px]">Guides for UK, USA, and Australia will appear here soon.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

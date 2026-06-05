@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Affiliate Dashboard — Upfront{% endblock %}
+
+{% block content %}
+<section class="py-12 px-4 sm:px-6 lg:px-8 bg-[#FAF9F6] min-h-screen">
+    <div class="max-w-7xl mx-auto">
+
+        <!-- Header -->
+        <div class="mb-10">
+            <p class="overline mb-2">Affiliate Dashboard</p>
+            <h1 class="text-3xl md:text-4xl font-display font-bold text-[#002D2D]">
+                Welcome, {{ affiliate.user.first_name|default:"Affiliate" }}
+            </h1>
+        </div>
+
+        <!-- Referral Link Card -->
+        <div class="card-wl p-6 md:p-8 mb-8 bg-gradient-to-r from-brand-500 to-[#002D2D] text-white shadow-xl"
+            x-data="{ copied: false }">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-display font-bold mb-1">Your Referral Link</h2>
+                    <p class="text-white/70 text-sm">Share this link to earn commissions when clients sign up and pay.
+                    </p>
+                </div>
+                <div
+                    class="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-5 py-3 border border-white/20">
+                    <span class="text-[13px] font-mono truncate max-w-[280px]" id="referral-url">{{ referral_url
+                        }}</span>
+                    <button
+                        @click="navigator.clipboard.writeText('{{ referral_url }}'); copied = true; setTimeout(() => copied = false, 2000)"
+                        class="px-4 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0"
+                        :class="copied ? 'bg-accent text-brand-900' : 'bg-white text-brand-900 hover:bg-accent'">
+                        <span x-show="!copied">Copy</span>
+                        <span x-show="copied" x-cloak>Copied!</span>
+                    </button>
+                </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-6 text-sm text-white/60">
+                <span>Code: <strong class="text-white">{{ affiliate.referral_code }}</strong></span>
+                <span>Commission: <strong class="text-accent">
+                        {% if affiliate.commission_type == 'FIXED' %}KSH {{ affiliate.commission_rate }}{% else %}{{
+                        affiliate.commission_rate }}%{% endif %}
+                        per payment</strong></span>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+            <div class="card-wl p-6">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" stroke-width="1.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                        </svg>
+                    </div>
+                    <span class="text-[12px] font-bold text-slate-400 uppercase tracking-wider">Total Referrals</span>
+                </div>
+                <p class="text-3xl font-display font-bold text-[#002D2D]">{{ stats.total_referrals }}</p>
+            </div>
+
+            <div class="card-wl p-6">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="1.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <span class="text-[12px] font-bold text-slate-400 uppercase tracking-wider">Active</span>
+                </div>
+                <p class="text-3xl font-display font-bold text-[#002D2D]">{{ stats.active_referrals }}</p>
+            </div>
+
+            <div class="card-wl p-6">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-brand-700" fill="none" stroke="currentColor" stroke-width="1.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <span class="text-[12px] font-bold text-slate-400 uppercase tracking-wider">Total Earned</span>
+                </div>
+                <p class="text-3xl font-display font-bold text-[#002D2D]">KSH {{ stats.total_earned }}</p>
+            </div>
+
+            <div class="card-wl p-6">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" stroke-width="1.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <span class="text-[12px] font-bold text-slate-400 uppercase tracking-wider">Pending</span>
+                </div>
+                <p class="text-3xl font-display font-bold text-[#002D2D]">KSH {{ stats.pending_commissions }}</p>
+            </div>
+        </div>
+
+        <!-- Two-column: Referrals + Commissions -->
+        <div class="grid lg:grid-cols-2 gap-8">
+
+            <!-- Referred Nurses -->
+            <div class="card-wl p-6 md:p-8">
+                <h2 class="text-xl font-display font-bold text-[#002D2D] mb-6">Referred Clients</h2>
+                {% if referrals %}
+                <div class="space-y-3">
+                    {% for ref in referrals %}
+                    <div class="flex items-center justify-between py-3 border-b border-slate-100 last:border-0">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-9 h-9 rounded-full bg-brand-50 flex items-center justify-center text-[12px] font-bold text-brand-600">
+                                {{ ref.referred_user.first_name|default:ref.referred_user.email|truncatechars:1|upper }}
+                            </div>
+                            <div>
+                                <p class="text-[14px] font-bold text-[#002D2D]">
+                                    {{ ref.referred_user.get_full_name|default:ref.referred_user.email }}
+                                </p>
+                                <p class="text-[12px] text-slate-400">{{ ref.created_at|timesince }} ago</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider
+                            {% if ref.status == 'PAID' %}bg-green-50 text-green-700
+                            {% elif ref.status == 'ACTIVE' %}bg-blue-50 text-blue-700
+                            {% else %}bg-slate-100 text-slate-500{% endif %}">
+                            {{ ref.get_status_display }}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="text-center py-12">
+                    <p class="text-slate-400 text-[14px]">No referrals yet. Share your link to get started!</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Commission History -->
+            <div class="card-wl p-6 md:p-8">
+                <h2 class="text-xl font-display font-bold text-[#002D2D] mb-6">Commission History</h2>
+                {% if commissions %}
+                <div class="space-y-3">
+                    {% for comm in commissions %}
+                    <div class="flex items-center justify-between py-3 border-b border-slate-100 last:border-0">
+                        <div>
+                            <p class="text-[14px] font-bold text-[#002D2D]">KSH {{ comm.amount }}</p>
+                            <p class="text-[12px] text-slate-400">
+                                {{ comm.referral.referred_user.get_full_name|default:comm.referral.referred_user.email
+                                }}
+                                · {{ comm.created_at|timesince }} ago
+                            </p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider
+                            {% if comm.status == 'PAID' %}bg-green-50 text-green-700
+                            {% elif comm.status == 'APPROVED' %}bg-blue-50 text-blue-700
+                            {% else %}bg-amber-50 text-amber-700{% endif %}">
+                            {{ comm.get_status_display }}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="text-center py-12">
+                    <p class="text-slate-400 text-[14px]">No commissions yet. They'll appear here when your referrals
+                        make payments.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!-- Payment Error -->
+<div id="payment-status" class="fade-in">
+    <div class="flex items-center gap-3 p-4 rounded-xl bg-red-500/10 border border-red-500/30">
+        <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center">
+            <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
+                    clip-rule="evenodd" />
+            </svg>
+        </div>
+        <div class="flex-1">
+            <p class="font-medium text-red-300">Payment Failed</p>
+            <p class="text-sm text-red-400/70 mt-0.5">
+                {% if transaction.result_desc %}{{ transaction.result_desc }}{% elif error %}{{ error }}{% else %}An
+                error occurred. Please try again.{% endif %}
+            </p>
+        </div>
+        <button onclick="history.back()"
+            class="px-4 py-2 rounded-lg bg-navy-600 text-white text-sm font-medium hover:bg-navy-500 transition-colors border border-navy-500">
+            Try Again
+        </button>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<!-- Course Progress Bar Partial -->
+<div id="progress-bar" class="fade-in">
+    <div class="flex items-center justify-between text-sm mb-1">
+        <span class="text-slate-400">Progress</span>
+        <span class="text-emerald-400 font-medium">{{ completed }}/{{ total }} modules</span>
+    </div>
+    <div class="w-full bg-navy-700 rounded-full h-2.5">
+        <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-2.5 rounded-full transition-all duration-700"
+            style="width: {{ completion_percent }}%"></div>
+    </div>
+</div>

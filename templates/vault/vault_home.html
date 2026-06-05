@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Document Vault — Upfront{% endblock %}
+{% block page_title %}Document Vault{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 sm:px-0">
+    <div class="flex items-center justify-between mb-8">
+        <div>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Document Vault</h1>
+            <p class="text-[15px] font-medium text-slate-500 mt-1">Upload and track your compliance documents</p>
+        </div>
+    </div>
+
+    <!-- Upload Form -->
+    <div class="bg-white rounded-2xl border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.08)] p-6 md:p-8 mb-8">
+        <h2 class="text-[13px] font-bold text-slate-400 uppercase tracking-widest mb-4">Upload New Document</h2>
+        <form hx-post="{% url 'vault:document_upload' %}" hx-target="#document-list" hx-swap="afterbegin"
+            hx-encoding="multipart/form-data" class="flex flex-col md:flex-row gap-4">
+            {% csrf_token %}
+            <select name="document_type" required
+                class="flex-1 px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 font-medium text-[14px] focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all outline-none">
+                <option value="">Select document type...</option>
+                {% for doc_type in document_types %}
+                <option value="{{ doc_type.pk }}">{{ doc_type.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="file" name="file" required
+                class="flex-1 text-[14px] font-medium text-slate-500 file:mr-4 file:py-2.5 file:px-5 file:rounded-xl file:border-0 file:text-[13px] file:font-bold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200 cursor-pointer transition-colors mt-1 md:mt-0">
+            <button type="submit"
+                class="px-8 py-3 rounded-xl bg-brand-500 text-white text-[14px] font-bold hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/25 whitespace-nowrap">
+                Upload Document
+            </button>
+        </form>
+    </div>
+
+    <!-- Documents Table -->
+    <div class="bg-white rounded-2xl border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.06)] overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="border-b border-slate-200 bg-slate-50/80">
+                        <th class="px-5 py-4 text-[12px] font-bold text-slate-500 uppercase tracking-widest">
+                            Document</th>
+                        <th class="px-5 py-4 text-[12px] font-bold text-slate-500 uppercase tracking-widest">Size
+                        </th>
+                        <th class="px-5 py-4 text-[12px] font-bold text-slate-500 uppercase tracking-widest">Status
+                        </th>
+                        <th class="px-5 py-4 text-[12px] font-bold text-slate-500 uppercase tracking-widest">
+                            Uploaded</th>
+                        <th class="px-5 py-4 text-[12px] font-bold text-slate-500 uppercase tracking-widest"></th>
+                    </tr>
+                </thead>
+                <tbody id="document-list" class="divide-y divide-slate-100">
+                    {% for doc in documents %}
+                    {% include 'partials/document_row.html' %}
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="px-5 py-16 text-center">
+                            <div
+                                class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center">
+                                <svg class="w-8 h-8 text-slate-300" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-[17px] font-bold text-slate-900 mb-1">No documents uploaded</h3>
+                            <p class="text-[15px] font-medium text-slate-500">Use the form above to securely upload your
+                                files.</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

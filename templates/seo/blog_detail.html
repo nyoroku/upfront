@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.seo_title }} — Upfront Journal{% endblock %}
+{% block meta_description %}{{ post.seo_description }}{% endblock %}
+{% block extra_meta %}
+{% if post.canonical_url %}
+<link rel="canonical" href="{{ post.canonical_url }}">{% endif %}
+{% if post.og_image %}
+<meta property="og:image" content="{{ post.og_image.url }}">{% elif post.featured_image %}
+<meta property="og:image" content="{{ post.featured_image.url }}">{% endif %}
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="{{ post.published_at|date:'c' }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ post.title|escapejs }}",
+  "description": "{{ post.seo_description|escapejs }}",
+  "datePublished": "{{ post.published_at|date:'c' }}",
+  "dateModified": "{{ post.updated_at|date:'c' }}",
+  {% if post.author %}"author": {"@type": "Person", "name": "{{ post.author.get_full_name|escapejs }}"},{% endif %}
+  "publisher": {"@type": "Organization", "name": "Upfront"}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <a href="{% url 'seo:blog_list' %}"
+        class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-slate-400 hover:text-brand-500 transition-colors mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+        Back to Journal
+    </a>
+
+    <header class="mb-10">
+        {% if post.category %}
+        <span class="text-[11px] font-bold text-brand-500 uppercase tracking-wider">{{ post.category.name }}</span>
+        {% endif %}
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-brand-900 leading-[1.1] mt-3 mb-5">{{ post.title
+            }}</h1>
+        <div class="flex items-center gap-4 text-[13px] text-slate-400">
+            {% if post.author %}
+            <div class="flex items-center gap-2">
+                <div
+                    class="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center text-[11px] font-bold text-brand-700">
+                    {{ post.author.first_name|truncatechars:1|upper }}{{ post.author.last_name|truncatechars:1|upper }}
+                </div>
+                <span class="font-medium text-slate-600">{{ post.author.get_full_name }}</span>
+            </div>
+            <span>·</span>
+            {% endif %}
+            <span>{{ post.reading_time_minutes }} min read</span>
+            {% if post.published_at %}<span>·</span><span>{{ post.published_at|date:"M d, Y" }}</span>{% endif %}
+        </div>
+    </header>
+
+    {% if post.featured_image %}
+    <figure class="mb-10 -mx-2 md:-mx-6">
+        <img src="{{ post.featured_image.url }}" alt="{{ post.featured_image_alt }}"
+            class="w-full rounded-2xl shadow-lg">
+    </figure>
+    {% endif %}
+
+    <div class="prose-wl">
+        {{ post.body|safe }}
+    </div>
+
+    {% if related %}
+    <div class="border-t border-slate-200 mt-14 pt-10">
+        <h3 class="text-xl font-extrabold text-brand-900 mb-6">Related Articles</h3>
+        <div class="grid md:grid-cols-3 gap-5">
+            {% for rp in related %}
+            <a href="{% url 'seo:blog_detail' rp.slug %}"
+                class="group bg-white rounded-xl border border-slate-100 p-5 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                <h4
+                    class="text-[14px] font-bold text-brand-900 group-hover:text-brand-500 transition-colors mb-2 line-clamp-2">
+                    {{ rp.title }}</h4>
+                <p class="text-[12px] text-slate-400 line-clamp-2">{{ rp.excerpt }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</article>
+{% endblock %}

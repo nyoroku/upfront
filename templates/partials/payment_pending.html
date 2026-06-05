@@ -1,0 +1,17 @@
+<!-- Payment Pending — auto-polls until SUCCESS or FAILED -->
+<div id="payment-status" hx-get="{% url 'payments:payment_status_poll' transaction.pk %}" hx-trigger="every 3s"
+    hx-swap="outerHTML">
+    <div class="flex items-center gap-3 p-4 rounded-xl bg-gold-500/10 border border-gold-500/30">
+        <svg class="animate-spin h-5 w-5 text-gold-400" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+            </path>
+        </svg>
+        <div>
+            <p class="font-medium text-gold-300">Waiting for M-Pesa confirmation</p>
+            <p class="text-sm text-gold-400/70 mt-0.5">Check your phone for the payment prompt</p>
+        </div>
+    </div>
+</div>
