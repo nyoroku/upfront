@@ -4,10 +4,10 @@ from apps.accounts.models import TimeStampedModel
 
 class Course(TimeStampedModel):
     EXAM_TYPE_CHOICES = [
-        ('NCLEX', 'NCLEX-RN (USA/AU)'),
-        ('CBT', 'UK Computer Based Test'),
-        ('IELTS', 'IELTS Academic'),
-        ('GENERAL', 'General / Wellness'),
+        ('ORTHO', 'Orthopedic & Spine Care'),
+        ('SPORTS', 'Sports & Active Rehab'),
+        ('NEURO', 'Stroke & Neuro Care'),
+        ('GENERAL', 'General Wellness & Prevention'),
     ]
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
@@ -61,7 +61,7 @@ class Quiz(TimeStampedModel):
 class Question(TimeStampedModel):
     QUESTION_TYPE_CHOICES = [
         ('MCQ', 'Multiple Choice'),
-        ('NGN', 'Next Generation NCLEX — Extended Reasoning'),
+        ('CASE', 'Clinical Case Study'),
     ]
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='questions')
     question_type = models.CharField(max_length=5, choices=QUESTION_TYPE_CHOICES)

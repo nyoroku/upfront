@@ -15,13 +15,13 @@ class TimeStampedModel(models.Model):
 
 class CandidateProfile(TimeStampedModel):
     DESTINATION_CHOICES = [
-        ('UK', 'United Kingdom'),
-        ('USA', 'United States'),
-        ('AU', 'Australia'),
+        ('UK', 'Orthopedic & Spine Care'),
+        ('USA', 'Sports Rehabilitation'),
+        ('AU', 'Neurological & Stroke Recovery'),
     ]
     QUALIFICATION_CHOICES = [
-        ('DEGREE', 'Bachelor of Science in Nursing'),
-        ('DIPLOMA', 'Diploma in Nursing'),
+        ('DEGREE', 'Bachelor of Science in Physiotherapy'),
+        ('DIPLOMA', 'Diploma in Physiotherapy'),
     ]
     STATUS_CHOICES = [
         ('ONBOARDING', 'Onboarding'),
@@ -35,7 +35,7 @@ class CandidateProfile(TimeStampedModel):
     )
     destination = models.CharField(max_length=3, choices=DESTINATION_CHOICES)
     qualification = models.CharField(max_length=10, choices=QUALIFICATION_CHOICES)
-    nck_number = models.CharField(max_length=50, blank=True)  # Nursing Council of Kenya
+    nck_number = models.CharField(max_length=50, blank=True, verbose_name="Physiotherapy Council Registration Number")  # e.g. PCT/12345/2026
     phone_number = models.CharField(max_length=20)  # for M-Pesa STK Push
     profile_photo = models.ImageField(upload_to='profiles/', blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='ONBOARDING')

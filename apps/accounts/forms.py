@@ -8,6 +8,11 @@ class OnboardingForm(forms.ModelForm):
     class Meta:
         model = CandidateProfile
         fields = ['destination', 'qualification', 'nck_number', 'phone_number', 'profile_photo']
+        labels = {
+            'destination': 'Primary Rehabilitation Specialty',
+            'qualification': 'Physiotherapy Qualification',
+            'nck_number': 'Physiotherapy Council Registration Number',
+        }
         widgets = {
             'destination': forms.Select(attrs={
                 'class': 'w-full px-4 py-3 rounded-lg border border-slate-600 bg-slate-800 text-white '
@@ -20,7 +25,7 @@ class OnboardingForm(forms.ModelForm):
             'nck_number': forms.TextInput(attrs={
                 'class': 'w-full px-4 py-3 rounded-lg border border-slate-600 bg-slate-800 text-white '
                          'focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500',
-                'placeholder': 'e.g. NCK/12345/2024',
+                'placeholder': 'e.g. PCT/12345/2026',
             }),
             'phone_number': forms.TextInput(attrs={
                 'class': 'w-full px-4 py-3 rounded-lg border border-slate-600 bg-slate-800 text-white '

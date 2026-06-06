@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}{% if destination_name %}{{ destination_name }} Physiotherapy Pathways{% else %}Destinations{% endif %} —
+{% block title %}{% if destination_name %}{{ destination_name }} Services{% else %}Our Services{% endif %} —
 Upfront{% endblock %}
-{% block meta_description %}{% if destination_name %}Explore physiotherapy pathways and rehabilitation services in
-{{destination_name }}.{% else %}Explore professional physiotherapy and rehabilitation services. Find
-destination-specific guides, requirements, and pathways.{% endif %}{% endblock %}
+{% block meta_description %}{% if destination_name %}Explore professional physiotherapy and rehabilitation services in
+{{destination_name }}.{% else %}Explore professional physiotherapy and rehabilitation services by Dan Mwangi Gichobi. Find
+specialty-specific guides, treatment plans, and recovery pathways.{% endif %}{% endblock %}
 
 {% block extra_meta %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "{% if destination_name %}{{ destination_name }} Physiotherapy Pathways{% else %}Physiotherapy Destination Guides{% endif %}",
-  "description": "{% if destination_name %}Physiotherapy pathways in {{ destination_name }}{% else %}Comprehensive physiotherapy destination guides{% endif %}",
+  "name": "{% if destination_name %}{{ destination_name }} Services{% else %}Physiotherapy Services & Specialties{% endif %}",
+  "description": "{% if destination_name %}Physiotherapy services for {{ destination_name }}{% else %}Comprehensive physiotherapy specialty guides{% endif %}",
   "numberOfItems": {{ pages|length }},
   "itemListElement": [
     {% for page in pages %}
@@ -34,10 +34,10 @@ destination-specific guides, requirements, and pathways.{% endif %}{% endblock %
         <p class="text-[12px] font-bold text-brand-500 uppercase tracking-[0.2em] mb-3">{% if destination_name %}{{destination_name }}{% else %}Explore{% endif %}</p>
         {% if destination_name %}
         <h1 class="text-3xl md:text-[42px] font-extrabold text-brand-900 leading-tight">{{ destination_name }} <span
-                class="text-highlight">Pathways</span></h1>
+                class="text-highlight">Services</span></h1>
         {% else %}
-        <h1 class="text-3xl md:text-[42px] font-extrabold text-brand-900 leading-tight">Destination <span
-                class="text-highlight">Guides</span></h1>
+        <h1 class="text-3xl md:text-[42px] font-extrabold text-brand-900 leading-tight">Our <span
+                class="text-highlight">Specialties</span></h1>
         {% endif %}
     </div>
 
@@ -61,8 +61,8 @@ destination-specific guides, requirements, and pathways.{% endif %}{% endblock %
     </div>
     {% else %}
     <div class="text-center py-20">
-        <h3 class="text-xl font-extrabold text-brand-900 mb-2">No destination guides yet</h3>
-        <p class="text-slate-400 text-[14px]">Guides for UK, USA, and Australia will appear here soon.</p>
+        <h3 class="text-xl font-extrabold text-brand-900 mb-2">No specialty guides yet</h3>
+        <p class="text-slate-400 text-[14px]">Guides for our specialties will appear here soon.</p>
     </div>
     {% endif %}
 </div>

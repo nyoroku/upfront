@@ -19,7 +19,7 @@ def onboarding(request):
             profile.user = request.user
             profile.status = 'ACTIVE'
             profile.save()
-            messages.success(request, 'Welcome to Worklane! Your profile has been created.')
+            messages.success(request, 'Welcome to Upfront! Your profile has been created.')
             return redirect('lanes:lane_dashboard')
     else:
         form = OnboardingForm()

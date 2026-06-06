@@ -111,13 +111,13 @@ class Command(BaseCommand):
         # 3. Pathway Highlights
         PathwayHighlight.objects.all().delete()
         pathways = [
-            {'title': 'Back & Neck Pain Relief', 'subtitle': 'Spine & Joint Health', 'order': 1},
-            {'title': 'Post-Fracture Recovery', 'subtitle': 'Bone & Joint Rehab', 'order': 2},
+            {'title': 'Back Pain Clinic', 'subtitle': 'Spine & Joint Health', 'order': 1},
+            {'title': 'Post-Surgical Rehabilitation', 'subtitle': 'Bone & Joint Rehab', 'order': 2},
             {'title': 'Stroke Rehabilitation', 'subtitle': 'Neurological Recovery', 'order': 3},
-            {'title': 'Sports Injury Treatment', 'subtitle': 'Athletic Performance', 'order': 4},
-            {'title': 'Ergonomic Assessment', 'subtitle': 'Occupational Health', 'order': 5},
+            {'title': 'Sports Rehabilitation', 'subtitle': 'Athletic Performance', 'order': 4},
+            {'title': 'General Wellness', 'subtitle': 'Occupational Health & Posture', 'order': 5},
             {'title': 'Dry Needling Therapy', 'subtitle': 'Pain Management', 'order': 6},
-            {'title': 'Home Physiotherapy', 'subtitle': 'In-home Visits', 'order': 7},
+            {'title': 'Home Visit Physiotherapy', 'subtitle': 'In-home Visits', 'order': 7},
         ]
         
         for p_data in pathways:

@@ -142,6 +142,9 @@ class Command(BaseCommand):
             },
         ]
 
+        # Clean existing local pages first
+        LocalPage.objects.all().delete()
+
         for page_data in pages_data:
             page, created = LocalPage.objects.update_or_create(
                 slug=page_data['slug'],
@@ -151,11 +154,11 @@ class Command(BaseCommand):
             self.stdout.write(f"  {status}: {page.title}")
 
     def _update_destination_links(self):
-        """Point destination cards to their filtered destination pages."""
+        """Point specialty highlights to their filtered services pages."""
         dest_url_map = {
-            'Orthopedic & Spine Care': '/destinations/uk/',
-            'Sports Rehabilitation': '/destinations/usa/',
-            'Neurological & Stroke Recovery': '/destinations/aus/',
+            'Orthopedic & Spine Care': '/services/uk/',
+            'Sports & Active Rehab': '/services/usa/',
+            'Stroke & Neuro Care': '/services/aus/',
         }
         for dest in DestinationHighlight.objects.all():
             url = dest_url_map.get(dest.country_name, '#')
@@ -170,15 +173,15 @@ class Command(BaseCommand):
             'Back Pain Clinic': 'back-pain-clinic',
             'Post-Surgical Rehabilitation': 'post-surgical-rehab',
             'Stroke Rehabilitation': 'stroke-rehabilitation',
+            'Sports Rehabilitation': 'sports-rehabilitation',
             'General Wellness': 'general-wellness',
             'Home Visit Physiotherapy': 'home-visit-physiotherapy',
             'Dry Needling Therapy': 'dry-needling-therapy',
-            'Athletic Performance': 'athletic-performance',
         }
         for pw in PathwayHighlight.objects.all():
             slug = slug_map.get(pw.title)
             if slug:
-                url = f'/destinations/page/{slug}/'
+                url = f'/services/page/{slug}/'
                 if pw.link_url != url:
                     pw.link_url = url
                     pw.save()
@@ -203,23 +206,23 @@ class Command(BaseCommand):
             categories[cat.name] = cat
 
         links_data = [
-            # Explore - using named URLs (resolved by get_url property)
+            # Explore - using named URLs
             {'category': categories['Explore'], 'title': 'Home', 'url': 'home', 'order': 1},
             {'category': categories['Explore'], 'title': 'Journal', 'url': 'seo:blog_list', 'order': 2},
             {'category': categories['Explore'], 'title': 'FAQ', 'url': 'seo:faq_list', 'order': 3},
             {'category': categories['Explore'], 'title': 'All Services', 'url': 'seo:local_page_list', 'order': 4},
 
-            # Specialties - direct URLs to LocalPages
-            {'category': categories['Specialties'], 'title': 'Orthopedic Care', 'url': '/destinations/page/orthopedic-care/', 'order': 1},
-            {'category': categories['Specialties'], 'title': 'Sports Rehabilitation', 'url': '/destinations/page/sports-rehabilitation/', 'order': 2},
-            {'category': categories['Specialties'], 'title': 'Stroke Rehabilitation', 'url': '/destinations/page/stroke-rehabilitation/', 'order': 3},
-            {'category': categories['Specialties'], 'title': 'Home Visit Physio', 'url': '/destinations/page/home-visit-physiotherapy/', 'order': 4},
+            # Specialties - direct URLs to LocalPages under /services/
+            {'category': categories['Specialties'], 'title': 'Orthopedic Care', 'url': '/services/page/orthopedic-care/', 'order': 1},
+            {'category': categories['Specialties'], 'title': 'Sports Rehabilitation', 'url': '/services/page/sports-rehabilitation/', 'order': 2},
+            {'category': categories['Specialties'], 'title': 'Stroke Rehabilitation', 'url': '/services/page/stroke-rehabilitation/', 'order': 3},
+            {'category': categories['Specialties'], 'title': 'Home Visit Physio', 'url': '/services/page/home-visit-physiotherapy/', 'order': 4},
 
             # Resources - direct URLs to blog posts and LocalPages
-            {'category': categories['Resources'], 'title': 'Back Pain Guide', 'url': '/destinations/page/back-pain-clinic/', 'order': 1},
-            {'category': categories['Resources'], 'title': 'Ergonomic Tips', 'url': '/destinations/page/general-wellness/', 'order': 2},
-            {'category': categories['Resources'], 'title': 'Post-Surgery Rehab', 'url': '/destinations/page/post-surgical-rehab/', 'order': 3},
-            {'category': categories['Resources'], 'title': 'Dry Needling', 'url': '/destinations/page/dry-needling-therapy/', 'order': 4},
+            {'category': categories['Resources'], 'title': 'Back Pain Guide', 'url': '/services/page/back-pain-clinic/', 'order': 1},
+            {'category': categories['Resources'], 'title': 'Ergonomic Tips', 'url': '/services/page/general-wellness/', 'order': 2},
+            {'category': categories['Resources'], 'title': 'Post-Surgery Rehab', 'url': '/services/page/post-surgical-rehab/', 'order': 3},
+            {'category': categories['Resources'], 'title': 'Dry Needling', 'url': '/services/page/dry-needling-therapy/', 'order': 4},
 
             # Contact - real links
             {'category': categories['Contact'], 'title': 'WhatsApp Us', 'url': 'https://wa.me/254700537371', 'order': 1},

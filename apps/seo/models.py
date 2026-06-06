@@ -133,10 +133,10 @@ class LocalPage(TimeStampedModel):
     Equivalent to local/city pages in local SEO strategies.
     """
     DESTINATION_CHOICES = [
-        ('UK', 'United Kingdom'),
-        ('USA', 'United States'),
-        ('AUS', 'Australia'),
-        ('ALL', 'All Destinations'),
+        ('UK', 'Orthopedic & Spine Care'),
+        ('USA', 'Sports Rehabilitation'),
+        ('AUS', 'Neurological & Stroke Recovery'),
+        ('ALL', 'All Services'),
     ]
 
     title = models.CharField(max_length=200)

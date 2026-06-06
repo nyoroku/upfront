@@ -79,7 +79,7 @@ class Command(BaseCommand):
 </ul>
 
 <h2>The Physical Therapy Rehabilitation Pathway</h2>
-<p>For most athletes, a structured, conservative <strong>6 to 8-week physical therapy program</strong> is the first line of defense. Our specialized <a href="/destinations/page/sports-rehabilitation/">Sports Rehabilitation program</a> focuses on restoring muscular balance across the pelvis.</p>
+<p>For most athletes, a structured, conservative <strong>6 to 8-week physical therapy program</strong> is the first line of defense. Our specialized <a href="/services/page/sports-rehabilitation/">Sports Rehabilitation program</a> focuses on restoring muscular balance across the pelvis.</p>
 
 <h3>Recommended Rehab Phases</h3>
 <ol>
@@ -89,7 +89,7 @@ class Command(BaseCommand):
 </ol>
 
 <h2>Preventing Re-injury</h2>
-<p>Core stability and adductor flexibility are crucial. Regular dynamic stretching, proper warm-ups, and core exercises like planks and deadbugs can prevent groin strains. Explore our <a href="/destinations/page/general-wellness/">General Wellness tips</a> to stay active and injury-free.</p>
+<p>Core stability and adductor flexibility are crucial. Regular dynamic stretching, proper warm-ups, and core exercises like planks and deadbugs can prevent groin strains. Explore our <a href="/services/page/general-wellness/">General Wellness tips</a> to stay active and injury-free.</p>
 
 <p>Experiencing chronic groin pain? <a href="/accounts/signup/">Sign up for an assessment</a> to receive a personalized sports rehab evaluation today.</p>''',
             },
@@ -122,7 +122,7 @@ class Command(BaseCommand):
 </ul>
 
 <h2>Advanced Strengthening & Balance (Weeks 7-12)</h2>
-<p>Focus shifts to long-term joint stability, balance training, and returning to recreational activities like hiking or swimming. See our <a href="/destinations/page/orthopedic-care/">Orthopedic Care clinic details</a> for customized program designs.</p>
+<p>Focus shifts to long-term joint stability, balance training, and returning to recreational activities like hiking or swimming. See our <a href="/services/page/orthopedic-care/">Orthopedic Care clinic details</a> for customized program designs.</p>
 
 <p>Ready to start your recovery? <a href="/accounts/signup/">Create a patient profile</a> to book your home or clinic sessions.</p>''',
             },
@@ -148,7 +148,7 @@ class Command(BaseCommand):
 <p>Avoid looking down at your laptop, which places immense strain on your neck muscles. Raise your laptop using a stand or a stack of books, and use an external keyboard and mouse.</p>
 
 <h2>4. The 20-20-20 Rule for Physical Rest</h2>
-<p>Every 20 minutes, stand up for 20 seconds, and stretch. Movement is the best antidote to static muscle fatigue. Explore our <a href="/destinations/page/general-wellness/">Lifestyle Ergonomic services</a> for posture evaluations.</p>
+<p>Every 20 minutes, stand up for 20 seconds, and stretch. Movement is the best antidote to static muscle fatigue. Explore our <a href="/services/page/general-wellness/">Lifestyle Ergonomic services</a> for posture evaluations.</p>
 
 <h2>5. Keep Essential Items Within Reach</h2>
   <p>Place your phone, notebook, and water bottle close to your body to prevent repetitive over-reaching, which causes muscle imbalances in the shoulders.</p>
@@ -178,7 +178,7 @@ class Command(BaseCommand):
 </ol>
 
 <h2>Home-Based Stroke Care in Kenya</h2>
-<p>For stroke survivors, traveling to a clinic can be incredibly exhausting. Our <a href="/destinations/page/stroke-rehabilitation/">Stroke and Neurological Rehab clinic</a> provides dedicated home-based visits to ensure recovery happens in a comfortable, familiar environment.</p>
+<p>For stroke survivors, traveling to a clinic can be incredibly exhausting. Our <a href="/services/page/stroke-rehabilitation/">Stroke and Neurological Rehab clinic</a> provides dedicated home-based visits to ensure recovery happens in a comfortable, familiar environment.</p>
 
 <p>Learn more about our <a href="/faqs/">frequently asked stroke rehab questions</a> or sign up to consult Dan Mwangi Gichobi.</p>''',
             },
@@ -200,7 +200,7 @@ class Command(BaseCommand):
 <h2>The Structured Rehabilitation</h2>
 <p>Mwangi\'s recovery began with gentle joint mobilization and tendon loading. "Dan was extremely patient. He monitored my tendon recovery, making sure we loaded the muscle progressive without overloading the healing tendon."</p>
 
-<p>The rehab incorporated eccentric heel drops, balance board exercises, and deep tissue mobilization. We slowly integrated running drills using our <a href="/destinations/page/sports-rehabilitation/">Sports Rehabilitation protocols</a>.</p>
+<p>The rehab incorporated eccentric heel drops, balance board exercises, and deep tissue mobilization. We slowly integrated running drills using our <a href="/services/page/sports-rehabilitation/">Sports Rehabilitation protocols</a>.</p>
 
 <h2>Back on the Track</h2>
 <p>Ten months post-injury, Mwangi successfully completed the Nairobi Marathon, achieving a personal best time. "The personalized care, expert manual therapy, and mental encouragement I received at Upfront made all the difference."</p>

@@ -1,5 +1,5 @@
 """
-Seeds courses with modules and quizzes.
+Seeds courses with modules and quizzes for physiotherapy specialties.
 Run: python manage.py seed_courses
 """
 from django.core.management.base import BaseCommand
@@ -8,145 +8,130 @@ from apps.lanes.models import MilestoneTemplate
 
 
 class Command(BaseCommand):
-    help = 'Seeds courses with modules, quizzes, and questions'
+    help = 'Seeds courses with modules, quizzes, and questions for Upfront Physiotherapy'
 
     def handle(self, *args, **kwargs):
         self.stdout.write("=== Seeding Courses ===")
 
-        courses_data = [
-            # ── CBT Preparation (UK) ──
-            {
-                'title': 'CBT Exam Mastery',
-                'slug': 'cbt-exam-mastery',
-                'exam_type': 'CBT',
-                'destination': 'UK',
-                'description': '<p>Complete preparation for the NMC Computer-Based Test. Covers Part A (Numeracy) and Part B (Clinical Nursing) with hundreds of practice questions and detailed explanations.</p><p>This course is designed for Kenyan nurses preparing for UK registration.</p>',
-                'is_free': False,
-                'milestone_slug': 'uk-cbt-prep',
-                'modules': [
-                    {'order': 1, 'title': 'Introduction to the CBT', 'duration_minutes': 20, 'is_preview': True},
-                    {'order': 2, 'title': 'Drug Dosage Calculations', 'duration_minutes': 45, 'is_preview': False},
-                    {'order': 3, 'title': 'Unit Conversions & Infusion Rates', 'duration_minutes': 40, 'is_preview': False},
-                    {'order': 4, 'title': 'Patient Safety & Safeguarding', 'duration_minutes': 35, 'is_preview': False},
-                    {'order': 5, 'title': 'Infection Control & Prevention', 'duration_minutes': 30, 'is_preview': False},
-                    {'order': 6, 'title': 'Medication Administration', 'duration_minutes': 40, 'is_preview': False},
-                    {'order': 7, 'title': 'Clinical Decision Making', 'duration_minutes': 35, 'is_preview': False},
-                    {'order': 8, 'title': 'Leadership & Management', 'duration_minutes': 30, 'is_preview': False},
-                ],
-                'quiz': {
-                    'title': 'CBT Mock Exam — Part B',
-                    'time_limit_minutes': 90,
-                    'pass_mark_percent': 60,
-                    'questions': [
-                        {'body': 'A patient is prescribed 500mg of amoxicillin. The tablets available are 250mg each. How many tablets should the nurse administer?',
-                         'explanation': 'Dose required / Dose available = 500mg / 250mg = 2 tablets.',
-                         'choices': [('1 tablet', False), ('2 tablets', True), ('3 tablets', False), ('4 tablets', False)]},
-                        {'body': 'What is the primary purpose of hand hygiene in healthcare settings?',
-                         'explanation': 'Hand hygiene is the single most important measure to prevent healthcare-associated infections (HCAIs).',
-                         'choices': [('To keep hands moisturised', False), ('To prevent healthcare-associated infections', True), ('To comply with hospital dress code', False), ('To remove visible dirt only', False)]},
-                        {'body': 'A nurse discovers a medication error. What should be the FIRST action?',
-                         'explanation': 'Patient safety is the priority. Assess the patient first, then report through proper channels.',
-                         'choices': [('File an incident report', False), ('Inform the pharmacy', False), ('Assess the patient for any adverse effects', True), ('Contact the prescribing doctor', False)]},
-                        {'body': 'When administering an intramuscular injection to an adult, which site is recommended for volumes greater than 2ml?',
-                         'explanation': 'The vastus lateralis and ventrogluteal sites can accommodate larger volumes (up to 5ml) compared to the deltoid (max 1ml).',
-                         'choices': [('Deltoid', False), ('Dorsogluteal', False), ('Ventrogluteal', True), ('Subcutaneous tissue', False)]},
-                        {'body': 'A patient has a NEWS2 score of 7. What level of clinical response is required?',
-                         'explanation': 'A NEWS2 score of 7 or more triggers an emergency response. The nurse should escalate immediately.',
-                         'choices': [('Routine monitoring every 12 hours', False), ('Increase monitoring to every 4 hours', False), ('Urgent clinical review within 1 hour', False), ('Emergency response — immediate clinical review', True)]},
-                    ]
-                }
-            },
+        # Clean existing courses to prevent duplicates/errors
+        Course.objects.all().delete()
 
-            # ── IELTS for Nurses (ALL) ──
+        courses_data = [
+            # ── Spine & Joint Care Mastery (Orthopedic / UK) ──
             {
-                'title': 'IELTS Academic for Nurses',
-                'slug': 'ielts-academic-nurses',
-                'exam_type': 'IELTS',
+                'title': 'Spine & Joint Care Mastery',
+                'slug': 'spine-joint-mastery',
+                'exam_type': 'ORTHO',
                 'destination': 'UK',
-                'description': '<p>Targeted IELTS preparation for healthcare professionals. Focus on medical vocabulary, clinical report writing, and healthcare-focused speaking topics.</p><p>Aim for Band 7.0+ with our structured 8-week programme.</p>',
+                'description': '<p>Learn the structure of your spine, core activation, and essential daily exercises to prevent and manage lower back pain. Led by Dan Mwangi Gichobi, certified physiotherapist.</p>',
                 'is_free': True,
-                'milestone_slug': 'uk-english-test',
+                'milestone_slug': 'ortho-active-rehab',
                 'modules': [
-                    {'order': 1, 'title': 'Understanding the IELTS Format', 'duration_minutes': 25, 'is_preview': True},
-                    {'order': 2, 'title': 'Listening — Healthcare Scenarios', 'duration_minutes': 40, 'is_preview': False},
-                    {'order': 3, 'title': 'Reading — Medical Journal Passages', 'duration_minutes': 45, 'is_preview': False},
-                    {'order': 4, 'title': 'Writing Task 1 — Graphs & Charts', 'duration_minutes': 40, 'is_preview': False},
-                    {'order': 5, 'title': 'Writing Task 2 — Healthcare Essays', 'duration_minutes': 45, 'is_preview': False},
-                    {'order': 6, 'title': 'Speaking — Clinical Communication', 'duration_minutes': 35, 'is_preview': False},
+                    {'order': 1, 'title': 'Introduction to Spine Anatomy', 'duration_minutes': 20, 'is_preview': True},
+                    {'order': 2, 'title': 'Core Activation & Stability Exercises', 'duration_minutes': 30, 'is_preview': False},
+                    {'order': 3, 'title': 'Ergonomics & Desk Posture Corrections', 'duration_minutes': 25, 'is_preview': False},
+                    {'order': 4, 'title': 'Safe Lifting Mechanics', 'duration_minutes': 25, 'is_preview': False},
                 ],
                 'quiz': {
-                    'title': 'IELTS Reading Practice Test',
-                    'time_limit_minutes': 60,
+                    'title': 'Spine & Joint Safety Quiz',
+                    'time_limit_minutes': 20,
                     'pass_mark_percent': 70,
                     'questions': [
-                        {'body': 'In IELTS Academic WritingTask 1, what is the recommended word count?',
-                         'explanation': 'Task 1 requires at least 150 words. Going significantly under will result in a penalty.',
-                         'choices': [('100 words', False), ('150 words', True), ('200 words', False), ('250 words', False)]},
-                        {'body': 'Which section of IELTS has the strictest time pressure for most test-takers?',
-                         'explanation': 'Reading is commonly cited as the most time-pressured section with 40 questions in 60 minutes across 3 passages.',
-                         'choices': [('Listening', False), ('Reading', True), ('Writing', False), ('Speaking', False)]},
-                        {'body': 'What band score does NMC require for each IELTS component?',
-                         'explanation': 'NMC requires minimum 7.0 in Reading, Listening, and Speaking, and 6.5 in Writing.',
-                         'choices': [('6.0 in each', False), ('6.5 in each', False), ('7.0 Reading/Listening/Speaking, 6.5 Writing', True), ('7.5 in each', False)]},
+                        {
+                            'body': 'Which muscle is considered a primary stabilizer of the lumbar spine?',
+                            'explanation': 'The Transversus Abdominis (TVA) acts like a natural corset around your lower back to stabilize the spine during movement.',
+                            'choices': [('Rectus Abdominis (Six-Pack)', False), ('Transversus Abdominis', True), ('Gluteus Medius', False), ('Biceps Femoris', False)]
+                        },
+                        {
+                            'body': 'How often is it recommended to stand up and move when working a desk job?',
+                            'explanation': 'Standing up and moving every 30 to 45 minutes reduces static muscle fatigue and spinal disc compression.',
+                            'choices': [('Every 4 hours', False), ('Every 2 hours', False), ('Every 30 to 45 minutes', True), ('Only during lunch break', False)]
+                        },
+                        {
+                            'body': 'When lifting a heavy object, what is the safest posture?',
+                            'explanation': 'To prevent back strain, bend at your knees and hips, keep your spine in a neutral alignment, and lift using your leg muscles.',
+                            'choices': [('Bend at the waist with straight legs', False), ('Keep your spine neutral, bend at the knees, and lift with your legs', True), ('Twist your torso while lifting', False), ('Pull the object away from your body', False)]
+                        },
                     ]
                 }
             },
 
-            # ── NCLEX-RN Preparation (USA) ──
+            # ── Sports Injury & Performance (Sports / USA) ──
             {
-                'title': 'NCLEX-RN Comprehensive Review',
-                'slug': 'nclex-rn-comprehensive',
-                'exam_type': 'NCLEX',
+                'title': 'Sports Injury & Athletic Recovery',
+                'slug': 'sports-injury-recovery',
+                'exam_type': 'SPORTS',
                 'destination': 'USA',
-                'description': '<p>Master the NCLEX-RN with our comprehensive review course. Covers all client needs categories with 3,000+ practice questions.</p><p>Our adaptive learning system focuses on your weak areas for maximum efficiency.</p>',
+                'description': '<p>Structured recovery protocols for common athletic injuries such as ligament sprains, muscle strains, and tendon care. Learn progressive loading and safe return-to-sport benchmarks.</p>',
                 'is_free': False,
-                'milestone_slug': 'usa-nclex-prep',
+                'milestone_slug': 'sports-loading-rehab',
                 'modules': [
-                    {'order': 1, 'title': 'NCLEX Format & Strategies', 'duration_minutes': 30, 'is_preview': True},
-                    {'order': 2, 'title': 'Safe & Effective Care Environment', 'duration_minutes': 50, 'is_preview': False},
-                    {'order': 3, 'title': 'Health Promotion & Maintenance', 'duration_minutes': 40, 'is_preview': False},
-                    {'order': 4, 'title': 'Psychosocial Integrity', 'duration_minutes': 35, 'is_preview': False},
-                    {'order': 5, 'title': 'Physiological Integrity — Basic', 'duration_minutes': 50, 'is_preview': False},
-                    {'order': 6, 'title': 'Physiological Integrity — Advanced', 'duration_minutes': 50, 'is_preview': False},
-                    {'order': 7, 'title': 'Pharmacology & IV Therapy', 'duration_minutes': 45, 'is_preview': False},
-                    {'order': 8, 'title': 'Prioritisation & Delegation', 'duration_minutes': 40, 'is_preview': False},
-                    {'order': 9, 'title': 'Next Generation NCLEX (NGN)', 'duration_minutes': 35, 'is_preview': False},
+                    {'order': 1, 'title': 'Acute Injury Management (PEACE & LOVE)', 'duration_minutes': 25, 'is_preview': True},
+                    {'order': 2, 'title': 'Knee & Ankle Stability Drills', 'duration_minutes': 35, 'is_preview': False},
+                    {'order': 3, 'title': 'Rotator Cuff & Shoulder Integrity', 'duration_minutes': 30, 'is_preview': False},
+                    {'order': 4, 'title': 'Return-to-Sport Functional Assessment', 'duration_minutes': 30, 'is_preview': False},
                 ],
                 'quiz': {
-                    'title': 'NCLEX-RN Practice Exam',
-                    'time_limit_minutes': 120,
-                    'pass_mark_percent': 65,
+                    'title': 'Sports Rehabilitation & Recovery Quiz',
+                    'time_limit_minutes': 30,
+                    'pass_mark_percent': 70,
                     'questions': [
-                        {'body': 'A nurse is caring for 4 patients. Which patient should be assessed FIRST?',
-                         'explanation': 'Using the ABCs framework, the patient with respiratory distress (airway/breathing) takes priority.',
-                         'choices': [('Patient with a blood glucose of 180 mg/dL', False), ('Patient complaining of nausea after surgery', False), ('Patient with new onset of dyspnoea and oxygen saturation of 88%', True), ('Patient requesting pain medication rated 6/10', False)]},
-                        {'body': 'Which task can be safely delegated to an unlicensed assistive personnel (UAP)?',
-                         'explanation': 'UAPs can perform routine, non-invasive tasks like measuring vital signs on stable patients. Assessment, teaching, and medication are RN responsibilities.',
-                         'choices': [('Teaching a newly diagnosed diabetic about insulin', False), ('Administering oral medications', False), ('Measuring vital signs on a stable post-operative patient', True), ('Assessing a patient\'s wound for signs of infection', False)]},
-                        {'body': 'A patient is on a heparin drip. The aPTT result is 120 seconds (therapeutic range: 60-80 seconds). What should the nurse do?',
-                         'explanation': 'An aPTT significantly above therapeutic range indicates over-anticoagulation. Stop the infusion and notify the provider immediately.',
-                         'choices': [('Continue the current rate', False), ('Increase the drip rate', False), ('Decrease the drip rate by 50%', False), ('Stop the infusion and notify the healthcare provider', True)]},
+                        {
+                            'body': 'In the modern acute injury protocol (PEACE & LOVE), what does the \'A\' in PEACE represent?',
+                            'explanation': 'The \'A\' stands for Avoid anti-inflammatory modalities, as natural inflammation is crucial for early tissue healing.',
+                            'choices': [('Apply ice immediately', False), ('Avoid anti-inflammatory modalities', True), ('Assess range of motion', False), ('Accelerate activity', False)]
+                        },
+                        {
+                            'body': 'Which muscle group is critical for stability and protecting the ACL in the knee?',
+                            'explanation': 'Strengthening the hamstrings helps control anterior shear forces on the tibia, directly supporting and protecting the ACL.',
+                            'choices': [('Gastrocnemius', False), ('Quadriceps only', False), ('Hamstrings & Gluteals', True), ('Tibialis Anterior', False)]
+                        },
+                        {
+                            'body': 'When is an athlete considered safe to return to full-contact sports after an injury?',
+                            'explanation': 'An athlete must pass a return-to-sport battery testing agility, stability, and achieving symmetrical strength (at least 90%) compared to the uninjured limb.',
+                            'choices': [('As soon as visible swelling disappears', False), ('When pain is tolerated with painkillers', False), ('Once they pass functional testing with symmetrical strength', True), ('Exactly 4 weeks after the injury', False)]
+                        },
                     ]
                 }
             },
 
-            # ── Mental Health Nursing (ALL) ──
+            # ── Stroke & Neuro Care (Neuro / AU) ──
             {
-                'title': 'Mental Health Nursing Essentials',
-                'slug': 'mental-health-nursing',
-                'exam_type': 'GENERAL',
-                'destination': 'UK',
-                'description': '<p>Build competence in mental health nursing for international practice. Covers assessment frameworks, therapeutic communication, medication management, and crisis intervention used in UK and US settings.</p>',
+                'title': 'Stroke & Neuro Rehab at Home',
+                'slug': 'stroke-neuro-home-rehab',
+                'exam_type': 'NEURO',
+                'destination': 'AU',
+                'description': '<p>Step-by-step home-based neurological exercises to promote neuroplasticity, retrain balance and walking mechanics, and establish a safe home care environment.</p>',
                 'is_free': False,
-                'milestone_slug': None,
+                'milestone_slug': 'neuro-active-rehab',
                 'modules': [
-                    {'order': 1, 'title': 'Introduction to Mental Health Nursing', 'duration_minutes': 25, 'is_preview': True},
-                    {'order': 2, 'title': 'Mental Health Assessment Frameworks', 'duration_minutes': 35, 'is_preview': False},
-                    {'order': 3, 'title': 'Therapeutic Communication', 'duration_minutes': 30, 'is_preview': False},
-                    {'order': 4, 'title': 'Psychopharmacology', 'duration_minutes': 40, 'is_preview': False},
-                    {'order': 5, 'title': 'Crisis Intervention & De-escalation', 'duration_minutes': 35, 'is_preview': False},
+                    {'order': 1, 'title': 'Introduction to Neuroplasticity & Rehab', 'duration_minutes': 20, 'is_preview': True},
+                    {'order': 2, 'title': 'Upper Limb Movement & ROM Drills', 'duration_minutes': 35, 'is_preview': False},
+                    {'order': 3, 'title': 'Gait Training & Balance Retention', 'duration_minutes': 40, 'is_preview': False},
+                    {'order': 4, 'title': 'Safe Patient Transfers & Caregiver Coaching', 'duration_minutes': 30, 'is_preview': False},
                 ],
-                'quiz': None,
+                'quiz': {
+                    'title': 'Neurological Rehab & Caregiver Safety Quiz',
+                    'time_limit_minutes': 20,
+                    'pass_mark_percent': 70,
+                    'questions': [
+                        {
+                            'body': 'What is neuroplasticity?',
+                            'explanation': 'Neuroplasticity is the brain\'s adaptive capability to reorganize and form new neural connections to recover lost functions.',
+                            'choices': [('Permanent muscle damage', False), ('The brain\'s ability to reorganize itself by forming new connections', True), ('Hardening of the nervous system', False), ('Loss of brain volume', False)]
+                        },
+                        {
+                            'body': 'Which training concept is most critical for recovering motor control after a stroke?',
+                            'explanation': 'Repetitive, high-volume, and task-specific training is key to stimulating neuroplastic changes.',
+                            'choices': [('Passive stretching only', False), ('Repetitive, task-specific training', True), ('Resting the limb completely', False), ('Sudden heavy weight lifting', False)]
+                        },
+                        {
+                            'body': 'When assisting a stroke patient with one-sided weakness (hemiplegia) to transfer, what is the best direction?',
+                            'explanation': 'For safety and to build confidence, always transfer towards the patient\'s strong (unaffected) side first.',
+                            'choices': [('Always transfer towards the weak side', False), ('Always transfer towards the strong (unaffected) side', True), ('It does not matter', False), ('Lift the patient completely without assistance', False)]
+                        },
+                    ]
+                }
             },
         ]
 

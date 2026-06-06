@@ -63,9 +63,13 @@ def local_page_list(request):
 
 
 def local_page_list_by_destination(request, destination):
-    """List destination landing pages filtered by destination code (UK, USA, AUS)."""
+    """List service landing pages filtered by specialty code (UK, USA, AUS)."""
     destination = destination.upper()
-    dest_map = {'UK': 'United Kingdom', 'USA': 'United States', 'AUS': 'Australia'}
+    dest_map = {
+        'UK': 'Orthopedic & Spine Care',
+        'USA': 'Sports Rehabilitation',
+        'AUS': 'Neurological & Stroke Recovery'
+    }
     dest_name = dest_map.get(destination, destination)
     pages = LocalPage.objects.filter(is_published=True, destination=destination)
     return render(request, 'seo/local_page_list.html', {

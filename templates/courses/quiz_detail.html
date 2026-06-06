@@ -35,10 +35,9 @@
                             class="flex-shrink-0 w-8 h-8 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[13px] font-extrabold text-slate-500 shadow-sm mt-0.5">{{forloop.counter }}</span>
                         <div>
                             <p class="text-slate-900 font-bold text-[16px] leading-relaxed">{{ question.body }}</p>
-                            {% if question.question_type == 'NGN' %}
+                            {% if question.question_type == 'CASE' %}
                             <span
-                                class="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-extrabold uppercase tracking-wide bg-purple-50 text-purple-600 border border-purple-200 mt-2">Next-Gen
-                                NCLEX</span>
+                                class="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-extrabold uppercase tracking-wide bg-purple-50 text-purple-600 border border-purple-200 mt-2">Clinical Case Study</span>
                             {% endif %}
                         </div>
                     </div>
