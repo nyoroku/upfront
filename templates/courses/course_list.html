@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}Courses — Upfront{% endblock %}
-{% block page_title %}Exam Preparation{% endblock %}
+{% block page_title %}Rehabilitation & Training{% endblock %}
 
 {% block content %}
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -10,8 +10,7 @@
         <h1 class="text-3xl md:text-4xl font-display font-bold text-brand-900 tracking-tight">Your
             <span class="text-highlight">Courses</span>
         </h1>
-        <p class="text-[15px] text-slate-500 mt-2">{{ profile.get_destination_display }} pathway — exam prep and career
-            development</p>
+        <p class="text-[15px] text-slate-500 mt-2">{{ profile.get_destination_display }} recovery plan — core rehabilitation and training development</p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
@@ -82,7 +81,7 @@
                 </svg>
             </div>
             <h3 class="text-xl font-display font-bold text-slate-900 mb-2">No courses available yet</h3>
-            <p class="text-[15px] text-slate-500">Courses for your destination will appear here soon.</p>
+            <p class="text-[15px] text-slate-500">Courses for your specialty will appear here soon.</p>
         </div>
         {% endfor %}
     </div>
